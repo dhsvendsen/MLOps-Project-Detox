@@ -400,3 +400,236 @@ FileNotFoundError: [WinError 2] Den angivne fil blev ikke fundet
 2023-01-06 14:34:58,794 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
 2023-01-06 14:35:14,014 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
 2023-01-06 14:35:14,014 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:35:29,243 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:35:29,243 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:35:44,456 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:35:44,456 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:35:59,631 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:35:59,631 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:36:14,840 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:36:14,840 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:36:30,043 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:36:30,045 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:36:45,284 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:36:45,285 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:37:00,475 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:37:00,475 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:37:15,688 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:37:15,688 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:37:28,501 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:37:28,501 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:37:30,917 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:37:30,918 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:37:31,071 INFO    Thread-17 :19436 [dir_watcher.py:_on_file_modified():292] file/dir modified: c:\Users\rune7\Documents\GitHub\MLOps-Project-Detox\notebooks\wandb\run-20230106_140527-uxi10e8y\files\output.log
+2023-01-06 14:37:46,124 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:37:46,124 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:38:01,371 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:38:01,371 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:38:16,612 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:38:16,612 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:38:31,832 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:38:31,832 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:38:47,200 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:38:47,200 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:39:02,438 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:39:02,438 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:39:17,673 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:39:17,673 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:39:32,909 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:39:32,909 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:39:48,125 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:39:48,125 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:40:03,421 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:40:03,421 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:40:18,711 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:40:18,711 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:40:33,950 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:40:33,951 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:40:49,319 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:40:49,319 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:41:09,391 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:41:09,391 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:41:24,626 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:41:24,627 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:41:39,886 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:41:39,886 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:41:55,109 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:41:55,109 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:42:10,355 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:42:10,355 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:42:25,620 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:42:25,620 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:42:42,321 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:42:42,321 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:42:42,954 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:42:42,954 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:42:57,951 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:42:57,951 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:43:13,162 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:43:13,162 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:43:28,376 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:43:28,376 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:43:43,562 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:43:43,562 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:43:58,768 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:43:58,768 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:44:14,003 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:44:14,003 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:44:29,210 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:44:29,210 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:44:44,395 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:44:44,395 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:44:59,600 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:44:59,600 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:45:14,798 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:45:14,798 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:45:29,999 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:45:29,999 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:45:45,196 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:45:45,199 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:46:00,393 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:46:00,396 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:46:15,607 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:46:15,607 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:46:30,810 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:46:30,810 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:46:45,999 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:46:45,999 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:47:01,189 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:47:01,189 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:47:16,375 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:47:16,376 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:47:31,588 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:47:31,588 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:47:46,768 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:47:46,768 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:48:01,980 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:48:01,980 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:48:17,199 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:48:17,199 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:48:24,296 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:48:24,299 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:48:24,300 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:48:24,301 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:48:32,422 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:48:32,422 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:48:47,609 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:48:47,611 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:49:02,808 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:49:02,810 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:49:18,005 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:49:18,008 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:49:33,214 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:49:33,214 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:49:48,452 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:49:48,452 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:50:03,650 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:50:03,650 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:50:14,821 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:50:14,821 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:50:18,158 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:50:18,158 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:50:18,850 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:50:18,850 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:50:34,065 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:50:34,065 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:50:49,271 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:50:49,272 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:50:54,774 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:50:54,778 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:50:54,842 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:50:54,842 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:51:04,473 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:51:04,473 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:51:19,663 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:51:19,663 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:51:34,968 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:51:34,970 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:51:50,159 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:51:50,159 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:52:05,362 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:52:05,362 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:52:20,565 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:52:20,567 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:52:35,748 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:52:35,748 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:52:50,944 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:52:50,944 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:53:06,162 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:53:06,162 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:53:21,353 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:53:21,354 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:53:36,544 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:53:36,544 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:53:41,382 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:53:41,382 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:53:41,492 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:53:41,492 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:53:47,663 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:53:47,663 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:53:47,743 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:53:47,743 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:53:51,752 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:53:51,753 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:54:06,959 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:54:06,959 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:54:22,276 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:54:22,276 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:54:37,463 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:54:37,464 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:54:52,701 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:54:52,703 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:55:07,914 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:55:07,914 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:55:23,117 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:55:23,117 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:55:30,541 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:55:30,541 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:55:31,970 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:55:31,972 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:55:38,323 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:55:38,323 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:55:53,637 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:55:53,637 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:56:03,430 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:56:03,430 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:56:03,539 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:56:03,539 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:56:08,838 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:56:08,838 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:56:24,026 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:56:24,026 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:56:39,205 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:56:39,207 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:56:54,410 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:56:54,410 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:57:09,621 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:57:09,621 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:57:24,836 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:57:24,836 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:57:40,037 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:57:40,038 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:57:48,459 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:57:48,459 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:57:48,581 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:57:48,581 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:57:55,229 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:57:55,229 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:58:02,687 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:58:02,687 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:58:02,697 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:58:02,697 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:58:10,424 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:58:10,424 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:58:11,966 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:58:11,966 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:58:13,377 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:58:13,377 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:58:13,868 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: resume
+2023-01-06 14:58:13,868 INFO    HandlerThread:19436 [handler.py:handle_request_resume():687] starting system metrics thread or process
+2023-01-06 14:58:13,883 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: pause
+2023-01-06 14:58:13,884 INFO    HandlerThread:19436 [handler.py:handle_request_pause():696] stopping system metrics thread or process
+2023-01-06 14:58:25,626 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:58:25,626 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
+2023-01-06 14:58:40,821 DEBUG   HandlerThread:19436 [handler.py:handle_request():139] handle_request: stop_status
+2023-01-06 14:58:40,821 DEBUG   SenderThread:19436 [sender.py:send_request():317] send_request: stop_status
