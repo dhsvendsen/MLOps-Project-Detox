@@ -11,9 +11,17 @@ In this project we wish to classify the severity of toxic behaviour, in user gen
 As we are working with text data in the form of user generated comments, we have choosen to use the [Transformers](https://github.com/huggingface/transformers) framework for our project. This is in large part to due to the state of the art pre-trained languague models contained in the framework.
 
 ### How to you intend to include the framework into your project
+We will use the transformers framework by utilizing the available pre-trained language models. Using the framework we will encode the data into a representation that can be passed to a classifyer. 
 
 ### What data are you going to run on (initially, may change)
-We will be using a dataset from the Kaggle competetion [Toxic Comment Classification Challenge](https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge/data).
+We will be using a dataset from the Kaggle competetion [Toxic Comment Classification Challenge](https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge/data). The dataset consists of user generated comments from Wikipedia. 
+
+The train dataset contains a comment and a corresponding label (based on human rater annotations), which is in a binary format.
+
+The Test dataset is split into a comments and labels file.
+
+The toxic classification groups are as follows:
+
 * `toxic`
 * `severe_toxic`
 * `obscene`
@@ -21,6 +29,7 @@ We will be using a dataset from the Kaggle competetion [Toxic Comment Classifica
 * `insult`
 * `identity_hate`
 ### What deep learning models do you expect to use
+
 
 
 Project Organization
