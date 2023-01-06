@@ -1,7 +1,27 @@
  MLOps-Project-Detox
 ==============================
+Rune xxxx \
+Jesper xx \
+Daniel xx \
+Gustav xx
 
-Classifying online toxic comments
+### Overall goal of the project
+In this project we wish to classify the severity of toxic behaviour, in user generated Wikipedia comments, which have been flagged as having content containing toxic behaviour.
+### What framework are you going to use (Kornia, Transformer, Pytorch-Geometrics)
+As we are working with text data in the form of user generated comments, we have choosen to use the [Transformers](https://github.com/huggingface/transformers) framework for our project. This is in large part to due to the state of the art pre-trained languague models contained in the framework.
+
+### How to you intend to include the framework into your project
+
+### What data are you going to run on (initially, may change)
+We will be using a dataset from the Kaggle competetion [Toxic Comment Classification Challenge](https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge/data).
+* `toxic`
+* `severe_toxic`
+* `obscene`
+* `threat`
+* `insult`
+* `identity_hate`
+### What deep learning models do you expect to use
+
 
 Project Organization
 ------------
