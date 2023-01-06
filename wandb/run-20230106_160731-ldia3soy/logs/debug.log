@@ -1,0 +1,32 @@
+2023-01-06 16:07:31,820 INFO    Thread-2  :17097 [wandb_setup.py:_flush():68] Configure stats pid to 17097
+2023-01-06 16:07:31,821 INFO    Thread-2  :17097 [wandb_setup.py:_flush():68] Loading settings from /home/jealk/.config/wandb/settings
+2023-01-06 16:07:31,822 INFO    Thread-2  :17097 [wandb_setup.py:_flush():68] Loading settings from /mnt/c/src/MLOps-Project-Detox/wandb/settings
+2023-01-06 16:07:31,823 INFO    Thread-2  :17097 [wandb_setup.py:_flush():68] Loading settings from environment variables: {'_require_service': 'True', 'project': 'my-first-sweep', 'entity': 'oldboys', 'root_dir': '/mnt/c/src/MLOps-Project-Detox', 'sweep_id': 'qrlnfnt9', 'run_id': 'ldia3soy', 'sweep_param_path': '/mnt/c/src/MLOps-Project-Detox/wandb/sweep-qrlnfnt9/config-ldia3soy.yaml'}
+2023-01-06 16:07:31,826 INFO    Thread-2  :17097 [wandb_setup.py:_flush():68] Inferring run settings from compute environment: {'program_relpath': 'wandb_tester.py', 'program': '/mnt/c/src/MLOps-Project-Detox/wandb_tester.py'}
+2023-01-06 16:07:31,828 INFO    Thread-2  :17097 [wandb_init.py:_log_setup():476] Logging user logs to /mnt/c/src/MLOps-Project-Detox/wandb/run-20230106_160731-ldia3soy/logs/debug.log
+2023-01-06 16:07:31,829 INFO    Thread-2  :17097 [wandb_init.py:_log_setup():477] Logging internal logs to /mnt/c/src/MLOps-Project-Detox/wandb/run-20230106_160731-ldia3soy/logs/debug-internal.log
+2023-01-06 16:07:31,831 INFO    Thread-2  :17097 [wandb_init.py:init():516] calling init triggers
+2023-01-06 16:07:31,832 INFO    Thread-2  :17097 [wandb_init.py:init():519] wandb.init called with sweep_config: {'batch_size': 64, 'epochs': 15, 'lr': 0.04334445619620103}
+config: {}
+2023-01-06 16:07:31,834 INFO    Thread-2  :17097 [wandb_init.py:init():569] starting backend
+2023-01-06 16:07:31,835 INFO    Thread-2  :17097 [wandb_init.py:init():573] setting up manager
+2023-01-06 16:07:31,867 INFO    Thread-2  :17097 [backend.py:_multiprocessing_setup():102] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-01-06 16:07:31,894 INFO    Thread-2  :17097 [wandb_init.py:init():580] backend started and connected
+2023-01-06 16:07:31,916 INFO    Thread-2  :17097 [wandb_run.py:_config_callback():1163] config_cb None None {'batch_size': 64, 'epochs': 15, 'lr': 0.04334445619620103}
+2023-01-06 16:07:31,919 INFO    Thread-2  :17097 [wandb_init.py:init():658] updated telemetry
+2023-01-06 16:07:32,185 INFO    Thread-2  :17097 [wandb_init.py:init():693] communicating run to backend with 60 second timeout
+2023-01-06 16:07:32,665 INFO    Thread-2  :17097 [wandb_run.py:_on_init():2006] communicating current version
+2023-01-06 16:07:32,791 INFO    Thread-2  :17097 [wandb_run.py:_on_init():2010] got version response 
+2023-01-06 16:07:32,792 INFO    Thread-2  :17097 [wandb_init.py:init():728] starting run threads in backend
+2023-01-06 16:07:37,851 INFO    Thread-2  :17097 [wandb_run.py:_console_start():1986] atexit reg
+2023-01-06 16:07:37,853 INFO    Thread-2  :17097 [wandb_run.py:_redirect():1844] redirect: SettingsConsole.WRAP_RAW
+2023-01-06 16:07:37,854 INFO    Thread-2  :17097 [wandb_run.py:_redirect():1909] Wrapping output streams.
+2023-01-06 16:07:37,855 INFO    Thread-2  :17097 [wandb_run.py:_redirect():1931] Redirects installed.
+2023-01-06 16:07:37,856 INFO    Thread-2  :17097 [wandb_init.py:init():765] run started, returning control to user process
+2023-01-06 16:07:37,861 INFO    Thread-2  :17097 [wandb_run.py:_finish():1753] finishing run oldboys/my-first-sweep/ldia3soy
+2023-01-06 16:07:37,862 INFO    Thread-2  :17097 [wandb_run.py:_atexit_cleanup():1955] got exitcode: 0
+2023-01-06 16:07:37,864 INFO    Thread-2  :17097 [wandb_run.py:_restore():1938] restore
+2023-01-06 16:07:37,865 INFO    Thread-2  :17097 [wandb_run.py:_restore():1944] restore done
+2023-01-06 16:07:44,465 INFO    Thread-2  :17097 [wandb_run.py:_footer_history_summary_info():3408] rendering history
+2023-01-06 16:07:44,467 INFO    Thread-2  :17097 [wandb_run.py:_footer_history_summary_info():3440] rendering summary
+2023-01-06 16:07:44,478 INFO    Thread-2  :17097 [wandb_run.py:_footer_sync_info():3364] logging synced files

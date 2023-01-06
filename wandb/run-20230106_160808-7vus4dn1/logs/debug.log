@@ -1,0 +1,32 @@
+2023-01-06 16:08:08,799 INFO    Thread-13 :17097 [wandb_setup.py:_flush():68] Configure stats pid to 17097
+2023-01-06 16:08:08,800 INFO    Thread-13 :17097 [wandb_setup.py:_flush():68] Loading settings from /home/jealk/.config/wandb/settings
+2023-01-06 16:08:08,801 INFO    Thread-13 :17097 [wandb_setup.py:_flush():68] Loading settings from /mnt/c/src/MLOps-Project-Detox/wandb/settings
+2023-01-06 16:08:08,802 INFO    Thread-13 :17097 [wandb_setup.py:_flush():68] Loading settings from environment variables: {'_require_service': 'True', 'project': 'my-first-sweep', 'entity': 'oldboys', 'root_dir': '/mnt/c/src/MLOps-Project-Detox', 'run_id': '7vus4dn1', 'sweep_param_path': '/mnt/c/src/MLOps-Project-Detox/wandb/sweep-qrlnfnt9/config-7vus4dn1.yaml', 'sweep_id': 'qrlnfnt9'}
+2023-01-06 16:08:08,808 INFO    Thread-13 :17097 [wandb_setup.py:_flush():68] Inferring run settings from compute environment: {'program_relpath': 'wandb_tester.py', 'program': '/mnt/c/src/MLOps-Project-Detox/wandb_tester.py'}
+2023-01-06 16:08:08,810 INFO    Thread-13 :17097 [wandb_init.py:_log_setup():476] Logging user logs to /mnt/c/src/MLOps-Project-Detox/wandb/run-20230106_160808-7vus4dn1/logs/debug.log
+2023-01-06 16:08:08,811 INFO    Thread-13 :17097 [wandb_init.py:_log_setup():477] Logging internal logs to /mnt/c/src/MLOps-Project-Detox/wandb/run-20230106_160808-7vus4dn1/logs/debug-internal.log
+2023-01-06 16:08:08,813 INFO    Thread-13 :17097 [wandb_init.py:init():516] calling init triggers
+2023-01-06 16:08:08,814 INFO    Thread-13 :17097 [wandb_init.py:init():519] wandb.init called with sweep_config: {'batch_size': 64, 'epochs': 15, 'lr': 0.04088206617583229}
+config: {}
+2023-01-06 16:08:08,816 INFO    Thread-13 :17097 [wandb_init.py:init():569] starting backend
+2023-01-06 16:08:08,817 INFO    Thread-13 :17097 [wandb_init.py:init():573] setting up manager
+2023-01-06 16:08:08,841 INFO    Thread-13 :17097 [backend.py:_multiprocessing_setup():102] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-01-06 16:08:08,866 INFO    Thread-13 :17097 [wandb_init.py:init():580] backend started and connected
+2023-01-06 16:08:08,887 INFO    Thread-13 :17097 [wandb_run.py:_config_callback():1163] config_cb None None {'batch_size': 64, 'epochs': 15, 'lr': 0.04088206617583229}
+2023-01-06 16:08:08,890 INFO    Thread-13 :17097 [wandb_init.py:init():658] updated telemetry
+2023-01-06 16:08:09,088 INFO    Thread-13 :17097 [wandb_init.py:init():693] communicating run to backend with 60 second timeout
+2023-01-06 16:08:09,535 INFO    Thread-13 :17097 [wandb_run.py:_on_init():2006] communicating current version
+2023-01-06 16:08:09,656 INFO    Thread-13 :17097 [wandb_run.py:_on_init():2010] got version response 
+2023-01-06 16:08:09,657 INFO    Thread-13 :17097 [wandb_init.py:init():728] starting run threads in backend
+2023-01-06 16:08:13,859 INFO    Thread-13 :17097 [wandb_run.py:_console_start():1986] atexit reg
+2023-01-06 16:08:13,861 INFO    Thread-13 :17097 [wandb_run.py:_redirect():1844] redirect: SettingsConsole.WRAP_RAW
+2023-01-06 16:08:13,862 INFO    Thread-13 :17097 [wandb_run.py:_redirect():1909] Wrapping output streams.
+2023-01-06 16:08:13,863 INFO    Thread-13 :17097 [wandb_run.py:_redirect():1931] Redirects installed.
+2023-01-06 16:08:13,864 INFO    Thread-13 :17097 [wandb_init.py:init():765] run started, returning control to user process
+2023-01-06 16:08:13,869 INFO    Thread-13 :17097 [wandb_run.py:_finish():1753] finishing run oldboys/my-first-sweep/7vus4dn1
+2023-01-06 16:08:13,870 INFO    Thread-13 :17097 [wandb_run.py:_atexit_cleanup():1955] got exitcode: 0
+2023-01-06 16:08:13,873 INFO    Thread-13 :17097 [wandb_run.py:_restore():1938] restore
+2023-01-06 16:08:13,873 INFO    Thread-13 :17097 [wandb_run.py:_restore():1944] restore done
+2023-01-06 16:08:18,146 INFO    Thread-13 :17097 [wandb_run.py:_footer_history_summary_info():3408] rendering history
+2023-01-06 16:08:18,147 INFO    Thread-13 :17097 [wandb_run.py:_footer_history_summary_info():3440] rendering summary
+2023-01-06 16:08:18,161 INFO    Thread-13 :17097 [wandb_run.py:_footer_sync_info():3364] logging synced files

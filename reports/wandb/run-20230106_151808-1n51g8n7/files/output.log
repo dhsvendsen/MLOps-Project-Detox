@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/mnt/c/src/MLOps-Project-Detox/wandb_tester.py", line 11, in <module>
+    wandb.log("config", config)
+  File "/home/jealk/anaconda3/envs/mlops_project/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 292, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/jealk/anaconda3/envs/mlops_project/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 255, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/jealk/anaconda3/envs/mlops_project/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1612, in log
+    self._log(data=data, step=step, commit=commit)
+  File "/home/jealk/anaconda3/envs/mlops_project/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1389, in _log
+    raise ValueError("wandb.log must be passed a dictionary")
+ValueError: wandb.log must be passed a dictionary

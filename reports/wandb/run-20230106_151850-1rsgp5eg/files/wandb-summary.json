@@ -1,0 +1,1 @@
+{"test_metric": 0.0043079724793354535, "_timestamp": 1673014735.6726947, "_runtime": 5.243834733963013, "_step": 100, "n": 100, "batch_size": 32, "_wandb": {"runtime": 4}}

@@ -1,0 +1,15 @@
+[34m[1mwandb[39m[22m: [32m[41mERROR[39m[49m Attempted to change value of key "n" from 100 to 200
+[34m[1mwandb[39m[22m: [32m[41mERROR[39m[49m If you really want to do this, pass allow_val_change=True to config.update()
+Traceback (most recent call last):
+  File "/mnt/c/src/MLOps-Project-Detox/wandb_tester.py", line 11, in <module>
+    wandb.config.update({"n": 200})
+  File "/home/jealk/anaconda3/envs/mlops_project/lib/python3.9/site-packages/wandb/sdk/wandb_config.py", line 188, in update
+    sanitized = self._update(d, allow_val_change)
+  File "/home/jealk/anaconda3/envs/mlops_project/lib/python3.9/site-packages/wandb/sdk/wandb_config.py", line 181, in _update
+    sanitized = self._sanitize_dict(
+  File "/home/jealk/anaconda3/envs/mlops_project/lib/python3.9/site-packages/wandb/sdk/wandb_config.py", line 241, in _sanitize_dict
+    k, v = self._sanitize(k, v, allow_val_change)
+  File "/home/jealk/anaconda3/envs/mlops_project/lib/python3.9/site-packages/wandb/sdk/wandb_config.py", line 265, in _sanitize
+    raise config_util.ConfigError(
+wandb.sdk.lib.config_util.ConfigError: Attempted to change value of key "n" from 100 to 200
+If you really want to do this, pass allow_val_change=True to config.update()

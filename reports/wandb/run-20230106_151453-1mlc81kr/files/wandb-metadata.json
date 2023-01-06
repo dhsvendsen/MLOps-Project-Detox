@@ -1,0 +1,117 @@
+{
+    "os": "Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.9.15",
+    "heartbeatAt": "2023-01-06T14:14:54.947959",
+    "startedAt": "2023-01-06T14:14:53.911145",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/mnt/c/src/MLOps-Project-Detox/wandb_tester.py",
+    "codePath": "wandb_tester.py",
+    "git": {
+        "remote": "https://github.com/dhsvendsen/MLOps-Project-Detox.git",
+        "commit": "85378665bef65b72ce90e8aa73bf6ef87dd5d669"
+    },
+    "email": "jalkestrup@gmail.com",
+    "root": "/mnt/c/src/MLOps-Project-Detox",
+    "host": "LAPTOP-H72CV10C",
+    "username": "jealk",
+    "executable": "/home/jealk/anaconda3/envs/mlops_project/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 1696.7589999999996,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 1696.759,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "total": 250.98248672485352,
+        "used": 11.030475616455078
+    },
+    "memory": {
+        "total": 14.510604858398438
+    }
+}
