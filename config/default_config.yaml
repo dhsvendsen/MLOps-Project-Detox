@@ -1,0 +1,3 @@
+defaults:
+  - model: bert.yaml
+  - train: train_subset.yaml
