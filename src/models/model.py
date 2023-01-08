@@ -29,8 +29,8 @@ class LightningBert(LightningModule):
         return optim.Adam(self.parameters(), lr=self.cfg.train["lr"])
     
     def train_dataloader(self):
-        inputs = torch.load(self.cfg.train["datapath"][0])
-        labels = torch.load(self.cfg.train["datapath"][1])
+        inputs = torch.load(self.cfg.train["datapaths"][0])
+        labels = torch.load(self.cfg.train["datapaths"][1])
         train = TensorDataset(inputs, labels)
         train_loader = DataLoader(train, batch_size=self.cfg.train["batch_size"], shuffle=True)
         return train_loader
