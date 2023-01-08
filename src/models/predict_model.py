@@ -17,21 +17,26 @@ def predict(cfg):
     inputs = torch.load(cfg.predict["datapaths"][0])
     labels = torch.load(cfg.predict["datapaths"][1])
     test = TensorDataset(inputs, labels)
-    test_set = DataLoader(test, batch_size=16, shuffle=True)
+    test_set = DataLoader(test, batch_size=cfg.predict['batch_size'], shuffle=False)
 
     with torch.no_grad():
-        metric = torch.tensor([0], dtype=torch.float)
-        for inputs, labels in test_set:
-            print(inputs)
-            outputs = model(inputs)
-            outputs = torch.sigmoid(outputs) 
-            outputs[outputs >= 0.5] = 1
-            print(labels, outputs)
-            equals = outputs == labels
-            metric = torch.mean(equals.type(torch.FloatTensor))
-            break
-        print(f"Percetage \"1s\" caught: {metric.item()*100/len(test_set)}%")
+        label_specific = torch.tensor([0], dtype=torch.float)
+        any_toxicity = torch.tensor([0], dtype=torch.float)
+        for i, (inputs, labels) in enumerate(test_set):
+            # Only count if there is any toxicity
+            if labels.sum() > 0:
+                outputs = model(inputs)
+                outputs = torch.sigmoid(outputs) 
+                outputs[outputs >= 0.5] = 1
+                correct_1s = outputs == labels
+                label_specific += (correct_1s.sum()/labels.sum()).type(torch.FloatTensor)
+                correct_rows = correct_1s.sum(axis=1) > 0
+                toxic_rows = labels.sum(axis=1) > 0
+                any_toxicity += (correct_rows.sum()/toxic_rows.sum()).type(torch.FloatTensor)
 
+
+        print(f"Percetage of all \"1s\" caught: {label_specific.item()*100/len(test_set)}%")
+        print(f"Percetage of toxic (any kind) comments caught: {any_toxicity.item()*100/len(test_set)}%")
 
 if __name__ == "__main__":
     predict()
