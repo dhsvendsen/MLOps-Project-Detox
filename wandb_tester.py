@@ -2,6 +2,33 @@ import wandb
 import numpy as np
 import random
 
+import yaml
+
+# Load sweep config from YAML file
+with open("train_config.yaml", "r") as f:
+    sweep_configuration = yaml.load(f, Loader=yaml.FullLoader)
+
+# No need to redefine the sweep configuration in here unless we want it repeated for clarity?
+"""
+sweep_configuration = {
+    "method": config_yaml["method"],
+    "name": config_yaml["name"],
+    "metric": {
+        "goal": config_yaml["metric"]["goal"],
+        "name": config_yaml["metric"]["name"],
+    },
+    "parameters": {
+        "batch_size": {"values": config_yaml["parameters"]["batch_size"]},
+        "epochs": {"values": config_yaml["parameters"]["epochs"]},
+        "lr": {
+            "max": config_yaml["parameters"]["learning_rate"]["max"],
+            "min": config_yaml["parameters"]["learning_rate"]["min"],
+        },
+    },
+}
+
+"""
+"""
 # Define sweep config
 sweep_configuration = {
     "method": "random",
@@ -13,6 +40,7 @@ sweep_configuration = {
         "lr": {"max": 0.1, "min": 0.0001},
     },
 }
+"""
 
 # Initialize sweep by passing in config. (Optional) Provide a name of the project.
 sweep_id = wandb.sweep(sweep=sweep_configuration, project="my-first-sweep")
