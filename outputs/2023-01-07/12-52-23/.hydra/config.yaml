@@ -1,0 +1,10 @@
+model:
+  pretrained_name: bert-base-uncased
+train:
+  datapath:
+  - ../../data/processed/input_train_n10000_l32.pt
+  - ../../data/processed/labels_train_n10000.pt
+  pretrained_name: bert-base-uncased
+  lr: 0.001
+  n_epochs: 1
+  batch_size: 16
