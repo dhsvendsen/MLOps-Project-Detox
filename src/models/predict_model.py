@@ -16,16 +16,16 @@ def predict(cfg):
     model.load_state_dict(state_dict)
     inputs = torch.load(cfg.predict["datapaths"][0])
     labels = torch.load(cfg.predict["datapaths"][1])
-    test = TensorDataset(inputs, labels)
+    test = TensorDataset(inputs[0], inputs[1], labels)
     test_set = DataLoader(test, batch_size=cfg.predict['batch_size'], shuffle=False)
 
     with torch.no_grad():
         label_specific = torch.tensor([0], dtype=torch.float)
         any_toxicity = torch.tensor([0], dtype=torch.float)
-        for i, (inputs, labels) in enumerate(test_set):
+        for i, (tokens, mask, labels) in enumerate(test_set):
             # Only count if there is any toxicity
             if labels.sum() > 0:
-                outputs = model(inputs)
+                outputs = model(tokens, mask)
                 outputs = torch.sigmoid(outputs) 
                 outputs[outputs >= 0.5] = 1
                 correct_1s = outputs == labels
