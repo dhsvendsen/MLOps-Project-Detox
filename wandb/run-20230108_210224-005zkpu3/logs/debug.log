@@ -1,0 +1,32 @@
+2023-01-08 21:02:24,775 INFO    Thread-18 :3213 [wandb_setup.py:_flush():68] Configure stats pid to 3213
+2023-01-08 21:02:24,776 INFO    Thread-18 :3213 [wandb_setup.py:_flush():68] Loading settings from /home/jealk/.config/wandb/settings
+2023-01-08 21:02:24,776 INFO    Thread-18 :3213 [wandb_setup.py:_flush():68] Loading settings from /mnt/c/src/MLOps-Project-Detox/wandb/settings
+2023-01-08 21:02:24,777 INFO    Thread-18 :3213 [wandb_setup.py:_flush():68] Loading settings from environment variables: {'_require_service': 'True', 'project': 'my-first-sweep', 'entity': 'oldboys', 'root_dir': '/mnt/c/src/MLOps-Project-Detox', 'run_id': '005zkpu3', 'sweep_param_path': '/mnt/c/src/MLOps-Project-Detox/wandb/sweep-zwonw8rx/config-005zkpu3.yaml', 'sweep_id': 'zwonw8rx'}
+2023-01-08 21:02:24,783 INFO    Thread-18 :3213 [wandb_setup.py:_flush():68] Inferring run settings from compute environment: {'program_relpath': 'wandb_tester.py', 'program': '/mnt/c/src/MLOps-Project-Detox/wandb_tester.py'}
+2023-01-08 21:02:24,784 INFO    Thread-18 :3213 [wandb_init.py:_log_setup():476] Logging user logs to /mnt/c/src/MLOps-Project-Detox/wandb/run-20230108_210224-005zkpu3/logs/debug.log
+2023-01-08 21:02:24,785 INFO    Thread-18 :3213 [wandb_init.py:_log_setup():477] Logging internal logs to /mnt/c/src/MLOps-Project-Detox/wandb/run-20230108_210224-005zkpu3/logs/debug-internal.log
+2023-01-08 21:02:24,786 INFO    Thread-18 :3213 [wandb_init.py:init():516] calling init triggers
+2023-01-08 21:02:24,786 INFO    Thread-18 :3213 [wandb_init.py:init():519] wandb.init called with sweep_config: {'batch_size': 16, 'epochs': 5, 'lr': 0.026356504593152863}
+config: {}
+2023-01-08 21:02:24,787 INFO    Thread-18 :3213 [wandb_init.py:init():569] starting backend
+2023-01-08 21:02:24,788 INFO    Thread-18 :3213 [wandb_init.py:init():573] setting up manager
+2023-01-08 21:02:24,810 INFO    Thread-18 :3213 [backend.py:_multiprocessing_setup():102] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-01-08 21:02:24,840 INFO    Thread-18 :3213 [wandb_init.py:init():580] backend started and connected
+2023-01-08 21:02:24,866 INFO    Thread-18 :3213 [wandb_run.py:_config_callback():1163] config_cb None None {'batch_size': 16, 'epochs': 5, 'lr': 0.026356504593152863}
+2023-01-08 21:02:24,868 INFO    Thread-18 :3213 [wandb_init.py:init():658] updated telemetry
+2023-01-08 21:02:25,059 INFO    Thread-18 :3213 [wandb_init.py:init():693] communicating run to backend with 60 second timeout
+2023-01-08 21:02:25,830 INFO    Thread-18 :3213 [wandb_run.py:_on_init():2006] communicating current version
+2023-01-08 21:02:26,074 INFO    Thread-18 :3213 [wandb_run.py:_on_init():2010] got version response 
+2023-01-08 21:02:26,075 INFO    Thread-18 :3213 [wandb_init.py:init():728] starting run threads in backend
+2023-01-08 21:02:29,545 INFO    Thread-18 :3213 [wandb_run.py:_console_start():1986] atexit reg
+2023-01-08 21:02:29,547 INFO    Thread-18 :3213 [wandb_run.py:_redirect():1844] redirect: SettingsConsole.WRAP_RAW
+2023-01-08 21:02:29,547 INFO    Thread-18 :3213 [wandb_run.py:_redirect():1909] Wrapping output streams.
+2023-01-08 21:02:29,548 INFO    Thread-18 :3213 [wandb_run.py:_redirect():1931] Redirects installed.
+2023-01-08 21:02:29,549 INFO    Thread-18 :3213 [wandb_init.py:init():765] run started, returning control to user process
+2023-01-08 21:02:29,552 INFO    Thread-18 :3213 [wandb_run.py:_finish():1753] finishing run oldboys/my-first-sweep/005zkpu3
+2023-01-08 21:02:29,553 INFO    Thread-18 :3213 [wandb_run.py:_atexit_cleanup():1955] got exitcode: 0
+2023-01-08 21:02:29,555 INFO    Thread-18 :3213 [wandb_run.py:_restore():1938] restore
+2023-01-08 21:02:29,556 INFO    Thread-18 :3213 [wandb_run.py:_restore():1944] restore done
+2023-01-08 21:02:34,383 INFO    Thread-18 :3213 [wandb_run.py:_footer_history_summary_info():3408] rendering history
+2023-01-08 21:02:34,384 INFO    Thread-18 :3213 [wandb_run.py:_footer_history_summary_info():3440] rendering summary
+2023-01-08 21:02:34,398 INFO    Thread-18 :3213 [wandb_run.py:_footer_sync_info():3364] logging synced files

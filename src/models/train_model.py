@@ -6,27 +6,27 @@ import matplotlib.pyplot as plt
 from model import ConvNet
 
 
-
-
 @click.group()
 def cli():
     pass
 
+
 # Datapath
-main_path = './data/processed'
+main_path = "./data/processed"
+
 
 @click.command()
-@click.option("--lr", default=1e-3, help='learning rate to use for training')
-@click.option("--epochs", default=5, help='learning rate to use for training')
+@click.option("--lr", default=1e-3, help="learning rate to use for training")
+@click.option("--epochs", default=5, help="learning rate to use for training")
 def train(lr, epochs):
     print("Training day and night")
     print(lr)
 
     # TODO: Implement training loop here
     # Pytorch train and test sets
-    images = torch.unsqueeze( torch.load(f'{main_path}/train_images.pt'), dim=1)
-    labels = torch.load(f'{main_path}/train_labels.pt')
-    train = TensorDataset(images,labels)
+    images = torch.unsqueeze(torch.load(f"{main_path}/train_images.pt"), dim=1)
+    labels = torch.load(f"{main_path}/train_labels.pt")
+    train = TensorDataset(images, labels)
     train_set = DataLoader(train, batch_size=8, shuffle=True)
 
     model = ConvNet()
@@ -49,15 +49,17 @@ def train(lr, epochs):
             optimizer.step()
             running_loss += loss.item()
 
-        epoch_loss = running_loss/len(train_set)
-        print(f'Epoch [{epoch+1}/{epochs}], Loss: {epoch_loss:.4f}')
+        epoch_loss = running_loss / len(train_set)
+        print(f"Epoch [{epoch+1}/{epochs}], Loss: {epoch_loss:.4f}")
         losses.append(epoch_loss)
 
-    torch.save(model.state_dict(), './models/cnn_checkpoint.pth')
+    torch.save(model.state_dict(), "./models/cnn_checkpoint.pth")
 
     plt.figure()
-    plt.plot([i+1 for i in range(epochs)],losses); plt.xlabel('Epoch'); plt.ylabel('Loss')
-    plt.savefig('./reports/figures/convergence.png',dpi=200)
+    plt.plot([i + 1 for i in range(epochs)], losses)
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.savefig("./reports/figures/convergence.png", dpi=200)
 
 
 cli.add_command(train)
