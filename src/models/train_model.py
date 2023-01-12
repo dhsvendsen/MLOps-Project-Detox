@@ -11,7 +11,9 @@ import hydra
 import wandb
 from omegaconf import OmegaConf
 
-if torch.has_mps:
+if torch.has_cuda:
+    acc="cuda"
+elif torch.has_mps:
     acc="mps"
 else:
     acc=None
@@ -21,8 +23,6 @@ else:
 def train(cfg):
     
     model = LightningBert(cfg)
-    #state_dict = torch.load(cfg.train['modelpath'])
-    #model.load_state_dict(state_dict)
 
     trainer = Trainer(max_epochs=cfg.train['n_epochs'],
         accelerator=acc)

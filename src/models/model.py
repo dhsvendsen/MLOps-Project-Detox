@@ -12,7 +12,6 @@ class LightningBert(LightningModule):
         self.cfg = cfg
         self.lr = self.cfg.train["lr"]
         self.batch_size = self.cfg.train["batch_size"]
-        self.save_hyperparameters()
         
         self.bert = BertModel.from_pretrained(
             self.cfg.model["pretrained_name"]
