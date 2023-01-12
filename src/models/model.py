@@ -10,11 +10,11 @@ class LightningBert(LightningModule):
     def __init__(self, cfg):
         super().__init__()
         self.cfg = cfg
-        self.lr = self.cfg.train["lr"]
-        self.batch_size = self.cfg.train["batch_size"]
+        self.lr = self.cfg["train"]["lr"]
+        self.batch_size = self.cfg["train"]["batch_size"]
         
         self.bert = BertModel.from_pretrained(
-            self.cfg.model["pretrained_name"]
+            self.cfg["model"]["pretrained_name"]
         )
         # Only train last layer
         for param in self.bert.parameters():
@@ -58,16 +58,16 @@ class LightningBert(LightningModule):
         return optim.Adam(self.parameters(), lr=self.lr)
     
     def train_dataloader(self):
-        inputs = torch.load(self.cfg.train["datapaths"][0])
-        labels = torch.load(self.cfg.train["datapaths"][1])
+        inputs = torch.load(self.cfg["train"]["datapaths"][0])
+        labels = torch.load(self.cfg["train"]["datapaths"][1])
         #train = TensorDataset(inputs, labels)
         train = TensorDataset(inputs[0], inputs[1], labels)
         train_loader = DataLoader(train, batch_size=self.batch_size, shuffle=True)
         return train_loader
 
     def val_dataloader(self):
-        inputs = torch.load(self.cfg.train["datapaths"][2])
-        labels = torch.load(self.cfg.train["datapaths"][3])
+        inputs = torch.load(self.cfg["train"]["datapaths"][2])
+        labels = torch.load(self.cfg["train"]["datapaths"][3])
         #val = TensorDataset(inputs, labels)
         val = TensorDataset(inputs[0], inputs[1], labels)
         val_loader = DataLoader(val, batch_size=self.batch_size, shuffle=True)

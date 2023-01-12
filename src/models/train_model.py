@@ -17,12 +17,14 @@ elif torch.has_mps:
     acc="mps"
 else:
     acc=None
+print(f"Using {acc} accelerator")
 
 
 @hydra.main(config_path="../../config", config_name="default_config.yaml")
 def train(cfg):
     
-    model = LightningBert(cfg)
+    cfg_dict = OmegaConf.to_container(cfg, resolve=True, throw_on_missing=True)
+    model = LightningBert(cfg_dict)
 
     trainer = Trainer(max_epochs=cfg.train['n_epochs'],
         accelerator=acc)
