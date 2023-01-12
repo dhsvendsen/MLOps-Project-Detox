@@ -10,6 +10,10 @@ class LightningBert(LightningModule):
     def __init__(self, cfg):
         super().__init__()
         self.cfg = cfg
+        self.lr = self.cfg.train["lr"]
+        self.batch_size = self.cfg.train["batch_size"]
+        self.save_hyperparameters()
+        
         self.bert = BertModel.from_pretrained(
             self.cfg.model["pretrained_name"]
         )
@@ -30,23 +34,25 @@ class LightningBert(LightningModule):
         # Forward pass
         outputs = self(inputs)
         # TODO: implement logging of the loss
-        return {"loss": self.loss(outputs, labels)}
+        loss = self.loss(outputs, labels)
+        self.log("train-loss", loss)
+        return loss
 
     def configure_optimizers(self):
-        return optim.Adam(self.parameters(), lr=self.cfg.train["lr"])
+        return optim.Adam(self.parameters(), lr=self.lr)
     
     def train_dataloader(self):
         inputs = torch.load(self.cfg.train["datapaths"][0])
         labels = torch.load(self.cfg.train["datapaths"][1])
         train = TensorDataset(inputs, labels)
-        train_loader = DataLoader(train, batch_size=self.cfg.train["batch_size"], shuffle=True)
+        train_loader = DataLoader(train, batch_size=self.batch_size, shuffle=True)
         return train_loader
 
     def val_dataloader(self):
         inputs = torch.load(self.cfg.train["datapaths"][2])
         labels = torch.load(self.cfg.train["datapaths"][3])
         val = TensorDataset(inputs, labels)
-        val_loader = DataLoader(val, batch_size=self.cfg.train["batch_size"], shuffle=True)
+        val_loader = DataLoader(val, batch_size=self.batch_size, shuffle=True)
         return val_loader
     
     def validation_step(self, batch, batch_idx):
