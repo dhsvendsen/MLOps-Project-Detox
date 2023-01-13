@@ -107,7 +107,7 @@ def main(input_filepath: str, output_filepath: str):
 
     train_tensor = torch.cat((torch.tensor(train_ids), torch.tensor(train_mask)), dim=1)
 
-    test_split, val_split = torch.split(test_data, test_data.size(1) // 2, dim=1)
+    test_split, val_split = torch.split(test_tensor, test_tensor.size(1) // 2, dim=1)
 
     # save torch tensors
     torch.save(test_split, os.path.join(output_filepath, "tokens_test.pt"))
