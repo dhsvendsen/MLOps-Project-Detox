@@ -12,11 +12,14 @@ COPY src/ src/
 COPY data/ data/
 COPY models/ models/
 COPY reports/ reports/
+COPY config/ config/
 
 # Set work dir in our container and add commands that install dependencies
 WORKDIR /
-#RUN pip install --upgrade pip
-#RUN pip install -r requirements.txt --no-cache-dir
+COPY requirements.txt requirements.txt
+COPY setup.py setup.py
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt --no-cache-dir
 
 # Set entrypoint
 #ENTRYPOINT ["python", "-u", "src/models/train_model.py", "train"]
