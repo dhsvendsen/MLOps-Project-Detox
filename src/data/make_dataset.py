@@ -103,22 +103,18 @@ def main(input_filepath: str, output_filepath: str):
     train_data[0] = train_ids
     train_data[1] = train_mask
 
-    test_tensor = torch.cat((torch.tensor(test_ids), torch.tensor(test_mask)), dim=1)
 
-    train_tensor = torch.cat((torch.tensor(train_ids), torch.tensor(train_mask)), dim=1)
-
-    test_split, val_split = torch.split(test_tensor, test_tensor.size(1) // 2, dim=1)
+    test_split, val_split = torch.split(test_data, test_data.size(1) // 2, dim=1)
 
     # save torch tensors
     torch.save(test_split, os.path.join(output_filepath, "tokens_test.pt"))
     torch.save(val_split, os.path.join(output_filepath, "tokens_val.pt"))
-    torch.save(train_tensor, os.path.join(output_filepath, "tokens_train.pt"))
+    torch.save(train_data, os.path.join(output_filepath, "tokens_train.pt"))
 
     # convert  test_data.drop(columns=['comment_text']) to torch tensor
     labels_test = torch.tensor(test_df.drop(columns=["comment_text", "id"]).values)
     labels_test_split, labels_val_split = torch.split(
-        labels_test, labels_test.size(0) // 2, dim=0
-    )
+        labels_test, labels_test.size(0) // 2, dim=0)
     labels_train = torch.tensor(train_df.drop(columns=["comment_text", "id"]).values)
 
     torch.save(labels_test_split, os.path.join(output_filepath, "labels_test.pt"))
@@ -132,6 +128,6 @@ def main(input_filepath: str, output_filepath: str):
 
 
 if __name__ == "__main__":
-    input_filepath = "data/raw"
-    output_filepath = "data/processed"
+    input_filepath = "../../data/raw"
+    output_filepath = "../../data/processed"
     main(input_filepath, output_filepath)
