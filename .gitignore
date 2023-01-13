@@ -78,12 +78,6 @@ target/
 # Jupyter NB Checkpoints
 .ipynb_checkpoints/
 
-# exclude data from source control by default
-#/data/
-
-# exclude large model files from source control by default
-/models/
-
 # exclude the outputs of wandb
 /outputs/
 
