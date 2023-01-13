@@ -1,4 +1,5 @@
 import os
+import pickle
 import torch
 import pytorch_lightning as pl
 # TODO: get paths right, the train_subset.yaml paths have too many ../../ >.<
@@ -11,36 +12,26 @@ import hydra
 import wandb
 from omegaconf import OmegaConf
 
-if torch.has_mps:
+if torch.has_cuda:
+    acc="cuda"
+elif torch.has_mps:
     acc="mps"
 else:
     acc=None
+print(f"Using {acc} accelerator")
 
-acc=None #wandb + mps doesn't work :(
 
 @hydra.main(config_path="../../config", config_name="default_config.yaml")
 def train(cfg):
     
-    wandb.init(
-      # Set the project where this run will be logged
-      project=cfg.wandb["project"], 
-      # We pass a run name (otherwise it’ll be randomly assigned, like sunshine-lollypop-10)
-      name=cfg.wandb["name"],
-      entity=cfg.wandb["entity"]
-      )
+    cfg_dict = OmegaConf.to_container(cfg, resolve=True, throw_on_missing=True)
+    with open('../../../src/deployment/latest_training_dict.pickle', 'wb') as handle:
+        pickle.dump(cfg_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-    # Pytorch wandb logger
-    wandb_logger = pl.loggers.WandbLogger(project=cfg.wandb['project'])
-    #wandb.config = OmegaConf.to_container(
-    #    cfg.train, resolve=True, throw_on_missing=True
-    #)
-    #wandb.log(wandb.config)
+    model = LightningBert(cfg_dict)
 
-    model = LightningBert(cfg)
-    wandb_logger.watch(model, log="all", log_freq=100)
     trainer = Trainer(max_epochs=cfg.train['n_epochs'],
-        accelerator=acc,
-        logger=wandb_logger)
+        accelerator=acc)
     trainer.fit(model)
 
     # Save
