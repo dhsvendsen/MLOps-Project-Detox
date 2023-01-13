@@ -60,7 +60,6 @@ class LightningBert(LightningModule):
     def train_dataloader(self):
         inputs = torch.load(self.cfg["train"]["datapaths"][0])
         labels = torch.load(self.cfg["train"]["datapaths"][1])
-        #train = TensorDataset(inputs, labels)
         train = TensorDataset(inputs[0], inputs[1], labels)
         train_loader = DataLoader(train, batch_size=self.batch_size, shuffle=True)
         return train_loader
