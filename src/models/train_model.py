@@ -1,7 +1,8 @@
 import pickle
 import subprocess
-import torch
+
 import hydra
+import torch
 from model import LightningBert
 from omegaconf import OmegaConf
 from pytorch_lightning import Trainer
