@@ -1,31 +1,22 @@
-import os
 import pickle
-import torch
-import pytorch_lightning as pl
-
 import subprocess
+import torch
+import hydra
+from model import LightningBert
+from omegaconf import OmegaConf
+from pytorch_lightning import Trainer
 
 # specify the name of the bucket and the folder
 bucket_name = "dtumlops-storage"
 folder_name = "models"
 
 
-# TODO: get paths right, the train_subset.yaml paths have too many ../../ >.<
-print(os.getcwd())
-print(os.path.dirname(os.path.abspath(__file__)))
-# from src.models.model import LightningBert
-from model import LightningBert
-from pytorch_lightning import Trainer
-import hydra
-import wandb
-from omegaconf import OmegaConf
-
 if torch.has_cuda:
     acc = "cuda"
 elif torch.has_mps:
     acc = "mps"
 else:
-    acc = None
+    acc = "cpu"
 print(f"Using {acc} accelerator")
 
 

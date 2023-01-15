@@ -4,15 +4,16 @@
 # from pathlib import Path
 # from dotenv import find_dotenv, load_dotenv
 import os
-import pandas as pd
-import torch
-from transformers import BertTokenizer, BertModel
-from tqdm import tqdm
 import re
 import string
+
+import nltk
+import pandas as pd
+import torch
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
-import nltk
+from tqdm import tqdm
+from transformers import BertTokenizer
 
 nltk.download("stopwords")
 
@@ -23,7 +24,7 @@ nltk.download("stopwords")
 def main(input_filepath: str, output_filepath: str):
     # Load the BERT tokenizer and model
     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-    model = BertModel.from_pretrained("bert-base-uncased")
+    # model = BertModel.from_pretrained("bert-base-uncased")
 
     # Load the test and train data
     test_text = pd.read_csv(os.path.join(input_filepath, "test.csv"))
@@ -103,7 +104,6 @@ def main(input_filepath: str, output_filepath: str):
     train_data[0] = train_ids
     train_data[1] = train_mask
 
-
     test_split, val_split = torch.split(test_data, test_data.size(1) // 2, dim=1)
 
     # save torch tensors
@@ -114,7 +114,8 @@ def main(input_filepath: str, output_filepath: str):
     # convert  test_data.drop(columns=['comment_text']) to torch tensor
     labels_test = torch.tensor(test_df.drop(columns=["comment_text", "id"]).values)
     labels_test_split, labels_val_split = torch.split(
-        labels_test, labels_test.size(0) // 2, dim=0)
+        labels_test, labels_test.size(0) // 2, dim=0
+    )
     labels_train = torch.tensor(train_df.drop(columns=["comment_text", "id"]).values)
 
     torch.save(labels_test_split, os.path.join(output_filepath, "labels_test.pt"))
