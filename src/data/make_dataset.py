@@ -103,16 +103,16 @@ def main(input_filepath: str, output_filepath: str):
     train_data[0] = train_ids
     train_data[1] = train_mask
 
-    test_tensor = torch.cat((torch.tensor(test_ids), torch.tensor(test_mask)), dim=1)
+#    test_tensor = torch.cat((torch.tensor(test_ids), torch.tensor(test_mask)), dim=1)
 
-    train_tensor = torch.cat((torch.tensor(train_ids), torch.tensor(train_mask)), dim=1)
+#    train_tensor = torch.cat((torch.tensor(train_ids), torch.tensor(train_mask)), dim=1)
 
     test_split, val_split = torch.split(test_data, test_data.size(1) // 2, dim=1)
 
     # save torch tensors
     torch.save(test_split, os.path.join(output_filepath, "tokens_test.pt"))
     torch.save(val_split, os.path.join(output_filepath, "tokens_val.pt"))
-    torch.save(train_tensor, os.path.join(output_filepath, "tokens_train.pt"))
+    torch.save(train_data, os.path.join(output_filepath, "tokens_train.pt"))
 
     # convert  test_data.drop(columns=['comment_text']) to torch tensor
     labels_test = torch.tensor(test_df.drop(columns=["comment_text", "id"]).values)
