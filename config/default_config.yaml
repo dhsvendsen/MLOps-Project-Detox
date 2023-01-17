@@ -1,5 +1,5 @@
 defaults:
   - model: bert.yaml
-  - train: train_all.yaml
-  - predict: pred_all.yaml
+  - train: train_binary.yaml
+  - predict: pred_binary.yaml
   - wandb: oldboys.yaml
