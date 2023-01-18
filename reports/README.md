@@ -281,7 +281,15 @@ Either we used 'git checkout main' to merge the branches locally and then subseq
 >
 > Answer:
 
---- question 12 fill here ---
+We used Hydra to keep track of our hyperparamters and thereby ensure reproducibility. An overall Hydra config file pointed to separate config files for each of the scripts related to the model: train, test and the model itself. These scripts initialize  by loading their respective config file, which sets hyperparamters such as the data paths and model paramers which in the case of the train script includes: 
+
+pretrained_name: "bert-base-uncased"
+lr: 0.001
+n_epochs: 2 
+batch_size: 32
+
+Using Hydra to create config files ensures that these are easy to understand for people unfamiliar with the code, which makes the project more reproducable.
+
 
 ### Question 13
 
@@ -296,16 +304,9 @@ Either we used 'git checkout main' to merge the branches locally and then subseq
 >
 > Answer:
 
-We used Hydra to keep track of our hyperparamters and thereby ensure reproducibility. An overall Hydra config file pointed to separate config files for each of the scripts related to the model: train, test and the model itself. These scripts initialize  by loading their respective config file, which sets hyperparamters such as the data paths and model paramers which in the case of the train script includes: 
+When running experiments, we would log the hyperparameters in the config files along with the performance using W&B. Combining W&B and Hydra config files proved somwhat challenging.
 
-pretrained_name: "bert-base-uncased"
-lr: 0.001
-n_epochs: 2 
-batch_size: 32
-
-Using Hydra to create config files ensures that these are easy to understand for people unfamiliar with the code, which makes the project more reproducable.
-
-When running experiments, we would log the hyperparameters in the config files along with the performance using W&B as described in Question 14. Combining W&B and Hydra proved somwhat challenging. 
+We did not get Hydra and W&B to work in conjunction. However, in our personal projects we tracked experiments using W&B by setting a Sweep config over select hyperparameters. This can be thought of as running experiments, since we are determening which combination of hyperparameters leads to the best performance and how good this performance is. Alternatively, we could also just run training etc. on a specific set of paramters and track how the performance metrics change over epochs etc.
 
 ### Question 14
 
