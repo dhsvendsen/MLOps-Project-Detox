@@ -148,6 +148,23 @@ end of the project.
 >
 > Answer:
 
+The first step would be to clone our repository from github:
+
+```bash
+git clone https://github.com/dhsvendsen/MLOps-Project-Detox.git
+```
+
+This repository contains a set of docker images and a requirements file (`requirements.txt`). To get an exact copy of our environment, one could simply create a virtual environment and pip install the contents of `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+However, to assure complete reproducability, it is recommened to instead utilize the docker the docker images stored on our Google Cloud Container registry. Simply pull the newest docker image:
+```bash
+docker pull INSERT PATH TO CONTAINER REGISTRY
+```
+and use this image to build a docker container.
+
+
 --- question 4 fill here ---
 
 ### Question 5
@@ -320,7 +337,33 @@ end of the project.
 >
 > Answer:
 
---- question 15 fill here ---
+We have developped two docker images for our project: one for training the model and a second for deploying the model.
+
+In order to get the latest docker images, you would pull the one you need from our Google Cloud Container Registry:
+
+```bash
+Insert where to pull from
+```
+
+You could then run/create a docker container:
+
+```bash
+Insert how to run docker container
+```
+
+Alternatively you could run everything in Google Cloud. Step one would be to run the training:
+
+```bash
+insert how to run training on GCP
+```
+
+Afterwards you could run the deployment using
+```bash
+gcloud run deploy gcp-test-app --image gcr.io/modified-wonder-374308/test_app:latest --platform managed --region europe-west1 --allow-unauthenticated --port 8080
+```
+
+
+
 
 ### Question 16
 
@@ -352,7 +395,11 @@ end of the project.
 >
 > Answer:
 
---- question 17 fill here ---
+- `Compute Engine`
+- `Container Registry`
+- 
+
+
 
 ### Question 18
 
