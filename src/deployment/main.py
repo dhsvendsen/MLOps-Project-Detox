@@ -1,4 +1,4 @@
-from model import LightningBert
+from model import LightningBertBinary
 import torch
 import string
 import pickle
@@ -27,22 +27,18 @@ def root():
     return response
 
 
-with open("latest_training_dict.pickle", "rb") as handle:
-    b = pickle.load(handle)
+with open("config/config.json") as file:
+    cfg = json.load(file)
 
 
 def load_model(b):
-    model = LightningBert(b)
-<<<<<<< HEAD
-    state_dict = torch.load('detox_checkpoint.pth')
-=======
-    state_dict = torch.load("detox_checkpoint1.pth")
->>>>>>> main
+    model = LightningBertBinary(b)
+    state_dict = torch.load('models/detox_checkpoint_binary.pth')
     model.load_state_dict(state_dict)
     return model
 
 
-my_model = load_model(b)
+my_model = load_model(cfg)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 my_model.to(device)
