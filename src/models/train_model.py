@@ -1,41 +1,33 @@
-import os
-import pickle
 import torch
-import pytorch_lightning as pl
-
-# TODO: get paths right, the train_subset.yaml paths have too many ../../ >.<
-print(os.getcwd())
-print(os.path.dirname(os.path.abspath(__file__)))
-# from src.models.model import LightningBert
-from model import LightningBert
+import json
+from model import LightningBertBinary
 from pytorch_lightning import Trainer
-import hydra
+import pytorch_lightning as pl
 import wandb
-from omegaconf import OmegaConf
 
 if torch.has_cuda:
-    acc = "cuda"
+    device = "cuda"
 elif torch.has_mps:
-    acc = "mps"
+    device = "mps"
 else:
-    acc = None
-print(f"Using {acc} accelerator")
+    device = "cpu"
+print(f"Using {device} accelerator")
 
 
-@hydra.main(config_path="../../config", config_name="default_config.yaml")
-def train(cfg):
+def train():
 
-    cfg_dict = OmegaConf.to_container(cfg, resolve=True, throw_on_missing=True)
-    with open("../../../src/deployment/latest_training_dict.pickle", "wb") as handle:
-        pickle.dump(cfg_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    # Load config
+    with open('config/config.json') as file:
+        cfg = json.load(file)
+    
+    model = LightningBertBinary(cfg)
 
-    model = LightningBert(cfg_dict)
-
-    trainer = Trainer(max_epochs=cfg.train["n_epochs"], accelerator=acc)
+    trainer = Trainer(max_epochs=cfg["model"]["n_epochs"], accelerator=device)
     trainer.fit(model)
 
     # Save
-    torch.save(model.state_dict(), cfg.train["modelpath"])
+    model.to("cpu")
+    torch.save(model.state_dict(), cfg["paths"]["path_checkpoint"])
 
 
 if __name__ == "__main__":

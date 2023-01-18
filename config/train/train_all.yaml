@@ -1,9 +1,0 @@
-datapaths: ["../../../data/processed/tokens_train.pt",
-          "../../../data/processed/labels_train.pt",
-          "../../../data/processed/tokens_val.pt",
-          "../../../data/processed/labels_val.pt"]
-modelpath: "../../../models/detox_checkpoint_all.pth"
-pretrained_name: "bert-base-uncased"
-lr: 0.001
-n_epochs: 2 
-batch_size: 32

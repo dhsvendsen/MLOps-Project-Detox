@@ -4,14 +4,12 @@ from pytorch_lightning import LightningModule
 from transformers import BertModel
 from torch.utils.data import TensorDataset, DataLoader
 
-
-
 class LightningBert(LightningModule):
     def __init__(self, cfg):
         super().__init__()
         self.cfg = cfg
-        self.lr = self.cfg["train"]["lr"]
-        self.batch_size = self.cfg["train"]["batch_size"]
+        self.lr = self.cfg["model"]["lr"]
+        self.batch_size = self.cfg["model"]["batch_size"]
         
         self.bert = BertModel.from_pretrained(
             self.cfg["model"]["pretrained_name"]
@@ -44,16 +42,15 @@ class LightningBert(LightningModule):
         return optim.Adam(self.parameters(), lr=self.lr)
     
     def train_dataloader(self):
-        inputs = torch.load(self.cfg["train"]["datapaths"][0])
-        labels = torch.load(self.cfg["train"]["datapaths"][1])
+        inputs = torch.load(self.cfg["paths"]["path_train_tokens"])
+        labels = torch.load(self.cfg["paths"]["path_train_labels"])
         train = TensorDataset(inputs[0].type(torch.int64), inputs[1].type(torch.int64), labels.float())
         train_loader = DataLoader(train, batch_size=self.batch_size, shuffle=True)
         return train_loader
 
     def val_dataloader(self):
-        inputs = torch.load(self.cfg["train"]["datapaths"][2])
-        labels = torch.load(self.cfg["train"]["datapaths"][3])
-        #val = TensorDataset(inputs, labels)
+        inputs = torch.load(self.cfg["paths"]["path_val_tokens"])
+        labels = torch.load(self.cfg["paths"]["path_val_labels"])
         val = TensorDataset(inputs[0].type(torch.int64), inputs[1].type(torch.int64), labels.float())
         val_loader = DataLoader(val, batch_size=self.batch_size, shuffle=True)
         return val_loader
@@ -68,8 +65,8 @@ class LightningBertBinary(LightningModule):
     def __init__(self, cfg):
         super().__init__()
         self.cfg = cfg
-        self.lr = self.cfg["train"]["lr"]
-        self.batch_size = self.cfg["train"]["batch_size"]
+        self.lr = self.cfg["model"]["lr"]
+        self.batch_size = self.cfg["model"]["batch_size"]
         
         self.bert = BertModel.from_pretrained(
             self.cfg["model"]["pretrained_name"]
@@ -78,9 +75,6 @@ class LightningBertBinary(LightningModule):
         for param in self.bert.parameters():
             param.requires_grad = False
         self.class_layer=nn.Linear(self.bert.config.hidden_size, 1) 
-        # BCE, since we are doing multi-label classification
-        # The weights are the fraction of 0's to 1's in each class
-        # So we multiply the 1-terms in the loss function with this for balance
         self.loss = nn.BCEWithLogitsLoss()
         
     def forward(self, tokens, mask):
@@ -101,16 +95,15 @@ class LightningBertBinary(LightningModule):
         return optim.Adam(self.parameters(), lr=self.lr)
     
     def train_dataloader(self):
-        inputs = torch.load(self.cfg["train"]["datapaths"][0])
-        labels = torch.load(self.cfg["train"]["datapaths"][1])
+        inputs = torch.load(self.cfg["paths"]["path_train_tokens"])
+        labels = torch.load(self.cfg["paths"]["path_train_labels"])
         train = TensorDataset(inputs[0].type(torch.int64), inputs[1].type(torch.int64), labels.float())
         train_loader = DataLoader(train, batch_size=self.batch_size, shuffle=True)
         return train_loader
 
     def val_dataloader(self):
-        inputs = torch.load(self.cfg["train"]["datapaths"][2])
-        labels = torch.load(self.cfg["train"]["datapaths"][3])
-        #val = TensorDataset(inputs, labels)
+        inputs = torch.load(self.cfg["paths"]["path_val_tokens"])
+        labels = torch.load(self.cfg["paths"]["path_val_labels"])
         val = TensorDataset(inputs[0].type(torch.int64), inputs[1].type(torch.int64), labels.float())
         val_loader = DataLoader(val, batch_size=self.batch_size, shuffle=True)
         return val_loader
