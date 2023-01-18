@@ -1,5 +1,0 @@
-defaults:
-  - model: bert.yaml
-  - train: train_subset.yaml
-  - predict: pred_subset.yaml
-  - wandb: oldboys.yaml

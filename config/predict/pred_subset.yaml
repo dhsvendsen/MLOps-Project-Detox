@@ -1,4 +1,0 @@
-datapaths: ["../../../data/processed/tokens_test_n500_l32.pt",
-            "../../../data/processed/labels_test_n500.pt"]
-modelpath: "../../../models/detox_checkpoint1.pth"
-batch_size: 8
