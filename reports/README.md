@@ -296,7 +296,16 @@ Either we used 'git checkout main' to merge the branches locally and then subseq
 >
 > Answer:
 
---- question 13 fill here ---
+We used Hydra to keep track of our hyperparamters and thereby ensure reproducibility. An overall Hydra config file pointed to separate config files for each of the scripts related to the model: train, test and the model itself. These scripts initialize  by loading their respective config file, which sets hyperparamters such as the data paths and model paramers which in the case of the train script includes: 
+
+pretrained_name: "bert-base-uncased"
+lr: 0.001
+n_epochs: 2 
+batch_size: 32
+
+Using Hydra to create config files ensures that these are easy to understand for people unfamiliar with the code, which makes the project more reproducable.
+
+When running experiments, we would log the hyperparameters in the config files along with the performance using W&B as described in Question 14. Combining W&B and Hydra proved somwhat challenging. 
 
 ### Question 14
 
