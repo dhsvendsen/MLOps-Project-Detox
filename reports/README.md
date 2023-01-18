@@ -129,7 +129,11 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
+Since our project is a NLP classification task, we utilized the Transformers framework from Huggingface. More specifically, we used the BertModel with pretrained weights. 
+
+First we preprocess the data by stemming, lowering and removing stop words using functionality from NLTK. Then we tokenize the comments using the functionality from the BertTokenizer. The new dataset is split into test, train and validation sets and saved as a tensor. 
+
+We then implemented a PyTorch NN model whose first layers are the BertModel with  frozen weights, followed by a trainable dense classification layer. As such, the Transformers framework helped us complete the project by effectively functioning as an embedding tool, whose outputs could then be classified with a simple linear layer. 
 
 ## Coding environment
 
@@ -240,7 +244,11 @@ and use this image to build a docker container.
 >
 > Answer:
 
---- question 9 fill here ---
+In our project we utilized branches in our workflow in order to be able to work on the project simultaneously. Each member had a branch which the person worked on. 
+
+To give an example, one branch (transformer_development) was dedicated to creating a make_dataset script, which transformed the raw data into tensors that the model could load during the training time. When this script was finished, we pulled from main into the transformer_develop and resolved any conflicts. We would then do one of two things: 
+
+Either we used 'git checkout main' to merge the branches locally and then subsequently push to the remote main branch. At other times, we comitted the local changes on the developer branch and created a pull request to main. By accepting this pull request, the two branches were merged and the make_dataset script added to the main branch. Similarly, for the other parts of the project. The former approach is likely the more appropriate for a group project, whereas the latter is representative of how one would contribute to a larger project that one does not have full permission over.
 
 ### Question 10
 
@@ -290,7 +298,15 @@ and use this image to build a docker container.
 >
 > Answer:
 
---- question 12 fill here ---
+We used Hydra to keep track of our hyperparamters and thereby ensure reproducibility. An overall Hydra config file pointed to separate config files for each of the scripts related to the model: train, test and the model itself. These scripts initialize  by loading their respective config file, which sets hyperparamters such as the data paths and model paramers which in the case of the train script includes: 
+
+pretrained_name: "bert-base-uncased"
+lr: 0.001
+n_epochs: 2 
+batch_size: 32
+
+Using Hydra to create config files ensures that these are easy to understand for people unfamiliar with the code, which makes the project more reproducable.
+
 
 ### Question 13
 
@@ -305,7 +321,9 @@ and use this image to build a docker container.
 >
 > Answer:
 
---- question 13 fill here ---
+When running experiments, we would log the hyperparameters in the config files along with the performance using W&B. Combining W&B and Hydra config files proved somwhat challenging.
+
+We did not get Hydra and W&B to work in conjunction. However, in our personal projects we tracked experiments using W&B by setting a Sweep config over select hyperparameters. This can be thought of as running experiments, since we are determening which combination of hyperparameters leads to the best performance and how good this performance is. Alternatively, we could also just run training etc. on a specific set of paramters and track how the performance metrics change over epochs etc.
 
 ### Question 14
 

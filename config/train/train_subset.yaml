@@ -5,5 +5,5 @@ datapaths: ["../../../data/processed/tokens_train_n5000_l32.pt",
 modelpath: "../../../models/detox_checkpoint1.pth"
 pretrained_name: "bert-base-uncased"
 lr: 0.001
-n_epochs: 5 
+n_epochs: 2 
 batch_size: 32

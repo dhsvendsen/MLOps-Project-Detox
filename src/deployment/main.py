@@ -42,7 +42,7 @@ def is_toxic(comment: str):
     # Remove punctuation
     text = comment.translate(str.maketrans('', '', string.punctuation))
     # Remove numbers
-    text = re.sub(r'\d+', '', text)
+    text = re.sub(r"\d+", "", text)
     # Convert to lowercase
     text = text.lower()
     # Remove stopwords
