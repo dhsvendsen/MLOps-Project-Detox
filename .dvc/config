@@ -1,4 +1,6 @@
 [core]
-    remote = daniels_gs_bucket
+    remote = jespers_gs_bucket
 ['remote "daniels_gs_bucket"']
     url = gs://mlops-course-bucket/
+['remote "jespers_gs_bucket"']
+    url = gs://dtumlops-storage
