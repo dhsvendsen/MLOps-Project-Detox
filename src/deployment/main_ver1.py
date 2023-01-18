@@ -12,41 +12,51 @@ import os
 
 app = FastAPI()
 
+
 @app.get("/")
 def root():
-    """ Health check."""
+    """Health check."""
     response = {
         "message": HTTPStatus.OK.phrase,
         "status-code": HTTPStatus.OK,
-        "cwd":os.getcwd()
+        "cwd": os.getcwd(),
     }
     return response
 
 
-
 @app.get("/items/{item_id}")
 def read_item(item_id: int):
-   return {"item_id": item_id}
+    return {"item_id": item_id}
 
-with open('/Users/gustavfranck/GitHub/MLOps-Project-Detox/src/deployment/latest_training_dict.pickle', 'rb') as handle:
+
+with open(
+    "/Users/gustavfranck/GitHub/MLOps-Project-Detox/src/deployment/latest_training_dict.pickle",
+    "rb",
+) as handle:
     b = pickle.load(handle)
+
 
 def load_model(b):
     model = LightningBert(b)
-    state_dict = torch.load('/Users/gustavfranck/GitHub/MLOps-Project-Detox/models/detox_checkpoint1.pth')
+    state_dict = torch.load(
+        "/Users/gustavfranck/GitHub/MLOps-Project-Detox/models/detox_checkpoint1.pth"
+    )
     model.load_state_dict(state_dict)
     return model
-my_model=load_model(b)
+
+
+my_model = load_model(b)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 my_model.to(device)
 
+
 @app.post("/text_model/")
 def is_toxic(comment: str):
     # Remove punctuation
-    text = comment.translate(str.maketrans('', '', string.punctuation))
+    text = comment.translate(str.maketrans("", "", string.punctuation))
     # Remove numbers
-    text = re.sub(r'\d+', '', text)
+    text = re.sub(r"\d+", "", text)
     # Convert to lowercase
     text = text.lower()
     # Remove stopwords
@@ -55,15 +65,14 @@ def is_toxic(comment: str):
     # Stemming or Lemmatization
     stemmer = SnowballStemmer("english")
     text = " ".join([stemmer.stem(word) for word in text.split()])
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-    out = tokenizer.encode_plus(text, truncation=True, max_length=64, padding="max_length", return_tensors="pt")
-    preds=my_model(out['input_ids'],out['attention_mask'])
+    tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+    out = tokenizer.encode_plus(
+        text, truncation=True, max_length=64, padding="max_length", return_tensors="pt"
+    )
+    preds = my_model(out["input_ids"], out["attention_mask"])
     preds = torch.sigmoid(preds)
-    #maybe this will error on GPU 
-    preds=preds.tolist()
+    # maybe this will error on GPU
+    preds = preds.tolist()
 
-    response={
-        "message": HTTPStatus.OK.phrase,
-        "pred":preds
-    }
+    response = {"message": HTTPStatus.OK.phrase, "pred": preds}
     return response

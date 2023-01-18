@@ -17,9 +17,9 @@ print(f"Using {device} accelerator")
 def train():
 
     # Load config
-    with open('config/config.json') as file:
+    with open("config/config.json") as file:
         cfg = json.load(file)
-    
+
     model = LightningBertBinary(cfg)
 
     trainer = Trainer(max_epochs=cfg["model"]["n_epochs"], accelerator=device)
@@ -28,6 +28,7 @@ def train():
     # Save
     model.to("cpu")
     torch.save(model.state_dict(), cfg["paths"]["path_checkpoint"])
+
 
 if __name__ == "__main__":
     train()
