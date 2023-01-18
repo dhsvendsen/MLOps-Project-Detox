@@ -129,7 +129,11 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
+Since our project is a NLP classification task, we utilized the Transformers framework from Huggingface. More specifically, we used the BertModel with pretrained weights. 
+
+First we preprocess the data by stemming, lowering and removing stop words using functionality from NLTK. Then we tokenize the comments using the functionality from the BertTokenizer. The new dataset is split into test, train and validation sets and saved as a tensor. 
+
+We then implemented a PyTorch NN model whose first layers are the BertModel with  frozen weights, followed by a trainable dense classification layer. As such, the Transformers framework helped us complete the project by effectively functioning as an embedding tool, whose outputs could then be classified with a simple linear layer. 
 
 ## Coding environment
 
