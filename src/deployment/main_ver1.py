@@ -1,9 +1,7 @@
-from model import LightningBert
+from src.models.model import LightningBert
 import torch
 import string
 import pickle
-import nltk
-nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 from transformers import BertTokenizer
@@ -24,12 +22,18 @@ def root():
     }
     return response
 
-with open('latest_training_dict.pickle', 'rb') as handle:
+
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int):
+   return {"item_id": item_id}
+
+with open('/Users/gustavfranck/GitHub/MLOps-Project-Detox/src/deployment/latest_training_dict.pickle', 'rb') as handle:
     b = pickle.load(handle)
 
 def load_model(b):
     model = LightningBert(b)
-    state_dict = torch.load('detox_checkpoint1.pth')
+    state_dict = torch.load('/Users/gustavfranck/GitHub/MLOps-Project-Detox/models/detox_checkpoint1.pth')
     model.load_state_dict(state_dict)
     return model
 my_model=load_model(b)
@@ -42,7 +46,7 @@ def is_toxic(comment: str):
     # Remove punctuation
     text = comment.translate(str.maketrans('', '', string.punctuation))
     # Remove numbers
-    text = re.sub(r"\d+", "", text)
+    text = re.sub(r'\d+', '', text)
     # Convert to lowercase
     text = text.lower()
     # Remove stopwords

@@ -29,6 +29,11 @@ def train():
     model.to("cpu")
     torch.save(model.state_dict(), cfg["paths"]["path_checkpoint"])
 
+    # use the gsutil cp command to upload the model file to the bucket
+    subprocess.run(
+        ["gsutil", "cp", cfg.train["modelpath"], f"gs://{bucket_name}/{folder_name}/"]
+    )
+
 
 if __name__ == "__main__":
     train()

@@ -1,6 +1,7 @@
 import torch
-from torch import optim, nn
 from pytorch_lightning import LightningModule
+from torch import nn, optim
+from torch.utils.data import DataLoader, TensorDataset
 from transformers import BertModel
 from torch.utils.data import TensorDataset, DataLoader
 
@@ -17,13 +18,15 @@ class LightningBert(LightningModule):
         # Only train last layer
         for param in self.bert.parameters():
             param.requires_grad = False
-        self.class_layer=nn.Linear(self.bert.config.hidden_size, 6) 
+        self.class_layer = nn.Linear(self.bert.config.hidden_size, 6)
         # BCE, since we are doing multi-label classification
         # The weights are the fraction of 0's to 1's in each class
         # So we multiply the 1-terms in the loss function with this for balance
-        pos_weights = torch.tensor([9.43, 99.04, 17.88, 332.83, 19.25, 112.57], dtype=torch.float32)
+        pos_weights = torch.tensor(
+            [9.43, 99.04, 17.88, 332.83, 19.25, 112.57], dtype=torch.float32
+        )
         self.loss = nn.BCEWithLogitsLoss(pos_weight=pos_weights)
-        
+
     def forward(self, tokens, mask):
         bertput = self.bert(tokens, mask)
         output = self.class_layer(bertput.pooler_output)
@@ -40,7 +43,7 @@ class LightningBert(LightningModule):
 
     def configure_optimizers(self):
         return optim.Adam(self.parameters(), lr=self.lr)
-    
+
     def train_dataloader(self):
         inputs = torch.load(self.cfg["paths"]["path_train_tokens"])
         labels = torch.load(self.cfg["paths"]["path_train_labels"])
@@ -54,7 +57,7 @@ class LightningBert(LightningModule):
         val = TensorDataset(inputs[0].type(torch.int64), inputs[1].type(torch.int64), labels.float())
         val_loader = DataLoader(val, batch_size=self.batch_size, shuffle=True)
         return val_loader
-    
+
     def validation_step(self, batch, batch_idx):
         inputs, mask, labels = batch
         outputs = self(inputs, mask)

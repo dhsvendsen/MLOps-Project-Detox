@@ -129,7 +129,11 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
+Since our project is a NLP classification task, we utilized the Transformers framework from Huggingface. More specifically, we used the BertModel with pretrained weights. 
+
+First we preprocess the data by stemming, lowering and removing stop words using functionality from NLTK. Then we tokenize the comments using the functionality from the BertTokenizer. The new dataset is split into test, train and validation sets and saved as a tensor. 
+
+We then implemented a PyTorch NN model whose first layers are the BertModel with  frozen weights, followed by a trainable dense classification layer. As such, the Transformers framework helped us complete the project by effectively functioning as an embedding tool, whose outputs could then be classified with a simple linear layer. 
 
 ## Coding environment
 
@@ -147,6 +151,23 @@ end of the project.
 > *complete copy of our development enviroment, one would have to run the following commands*
 >
 > Answer:
+
+The first step would be to clone our repository from github:
+
+```bash
+git clone https://github.com/dhsvendsen/MLOps-Project-Detox.git
+```
+
+This repository contains a set of docker images and a requirements file (`requirements.txt`). To get an exact copy of our environment, one could simply create a virtual environment and pip install the contents of `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+However, to assure complete reproducability, it is recommened to instead utilize the docker the docker images stored on our Google Cloud Container registry. Simply pull the newest docker image:
+```bash
+docker pull INSERT PATH TO CONTAINER REGISTRY
+```
+and use this image to build a docker container.
+
 
 --- question 4 fill here ---
 
@@ -223,7 +244,11 @@ end of the project.
 >
 > Answer:
 
---- question 9 fill here ---
+In our project we utilized branches in our workflow in order to be able to work on the project simultaneously. Each member had a branch which the person worked on. 
+
+To give an example, one branch (transformer_development) was dedicated to creating a make_dataset script, which transformed the raw data into tensors that the model could load during the training time. When this script was finished, we pulled from main into the transformer_develop and resolved any conflicts. We would then do one of two things: 
+
+Either we used 'git checkout main' to merge the branches locally and then subsequently push to the remote main branch. At other times, we comitted the local changes on the developer branch and created a pull request to main. By accepting this pull request, the two branches were merged and the make_dataset script added to the main branch. Similarly, for the other parts of the project. The former approach is likely the more appropriate for a group project, whereas the latter is representative of how one would contribute to a larger project that one does not have full permission over.
 
 ### Question 10
 
@@ -273,7 +298,15 @@ end of the project.
 >
 > Answer:
 
---- question 12 fill here ---
+We used Hydra to keep track of our hyperparamters and thereby ensure reproducibility. An overall Hydra config file pointed to separate config files for each of the scripts related to the model: train, test and the model itself. These scripts initialize  by loading their respective config file, which sets hyperparamters such as the data paths and model paramers which in the case of the train script includes: 
+
+pretrained_name: "bert-base-uncased"
+lr: 0.001
+n_epochs: 2 
+batch_size: 32
+
+Using Hydra to create config files ensures that these are easy to understand for people unfamiliar with the code, which makes the project more reproducable.
+
 
 ### Question 13
 
@@ -288,7 +321,9 @@ end of the project.
 >
 > Answer:
 
---- question 13 fill here ---
+When running experiments, we would log the hyperparameters in the config files along with the performance using W&B. Combining W&B and Hydra config files proved somwhat challenging.
+
+We did not get Hydra and W&B to work in conjunction. However, in our personal projects we tracked experiments using W&B by setting a Sweep config over select hyperparameters. This can be thought of as running experiments, since we are determening which combination of hyperparameters leads to the best performance and how good this performance is. Alternatively, we could also just run training etc. on a specific set of paramters and track how the performance metrics change over epochs etc.
 
 ### Question 14
 
@@ -320,7 +355,33 @@ end of the project.
 >
 > Answer:
 
---- question 15 fill here ---
+We have developped two docker images for our project: one for training the model and a second for deploying the model.
+
+In order to get the latest docker images, you would pull the one you need from our Google Cloud Container Registry:
+
+```bash
+Insert where to pull from
+```
+
+You could then run/create a docker container:
+
+```bash
+Insert how to run docker container
+```
+
+Alternatively you could run everything in Google Cloud. Step one would be to run the training:
+
+```bash
+insert how to run training on GCP
+```
+
+Afterwards you could run the deployment using
+```bash
+gcloud run deploy gcp-test-app --image gcr.io/modified-wonder-374308/test_app:latest --platform managed --region europe-west1 --allow-unauthenticated --port 8080
+```
+
+
+
 
 ### Question 16
 
@@ -352,7 +413,11 @@ end of the project.
 >
 > Answer:
 
---- question 17 fill here ---
+- `Compute Engine`
+- `Container Registry`
+- 
+
+
 
 ### Question 18
 
