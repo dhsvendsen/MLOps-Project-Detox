@@ -229,7 +229,9 @@ We then implemented a PyTorch NN model whose first layers are the BertModel with
 
 In our project we utilized branches in our workflow in order to be able to work on the project simultaneously. Each member had a branch which the person worked on. 
 
-To give an example, one branch (transformer_development) was dedicated to creating a make_dataset script, which transformed the raw data into tensors that the model could load during the training time. When this script was finished, we pulled from main into the transformer_develop and resolved any conflicts. We then comitted and created a pull request to main, which would merge transformer_development with main. By accepting this pull request, the make_dataset script was added to the main branch. Similarly, for the other parts of the project. 
+To give an example, one branch (transformer_development) was dedicated to creating a make_dataset script, which transformed the raw data into tensors that the model could load during the training time. When this script was finished, we pulled from main into the transformer_develop and resolved any conflicts. We would then do one of two things: 
+
+Either we used 'git checkout main' to merge the branches locally and then subsequently push to the remote main branch. At other times, we comitted the local changes on the developer branch and created a pull request to main. By accepting this pull request, the two branches were merged and the make_dataset script added to the main branch. Similarly, for the other parts of the project. The former approach is likely the more appropriate for a group project, whereas the latter is representative of how one would contribute to a larger project that one does not have full permission over.
 
 ### Question 10
 
