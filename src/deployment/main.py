@@ -29,7 +29,7 @@ with open('latest_training_dict.pickle', 'rb') as handle:
 
 def load_model(b):
     model = LightningBert(b)
-    state_dict = torch.load('detox_checkpoint1.pth')
+    state_dict = torch.load('detox_checkpoint.pth')
     model.load_state_dict(state_dict)
     return model
 my_model=load_model(b)
