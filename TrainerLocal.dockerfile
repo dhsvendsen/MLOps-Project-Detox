@@ -1,5 +1,5 @@
 # Base image
-FROM pytorch/pytorch:1.13.1-cuda11.6-cudnn8-devel
+FROM gcr.io/deeplearning-platform-release/pytorch-gpu.1-13
 
 RUN apt update && \
     apt install --no-install-recommends -y build-essential gcc && \
@@ -26,4 +26,4 @@ RUN dvc pull data.dvc
 RUN mkdir models/
 
 # Set entrypoint
-#ENTRYPOINT ["python", "-u", "src/models/train_model.py", "train"]
+ENTRYPOINT ["python", "-u", "src/models/train_model.py", "train"]

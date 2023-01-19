@@ -3,7 +3,7 @@ import json
 from model import LightningBertBinary
 from pytorch_lightning import Trainer
 import pytorch_lightning as pl
-import wandb
+from google.cloud import storage
 
 # test
 
@@ -29,7 +29,12 @@ def train():
 
     # Save
     model.to("cpu")
-    torch.save(model.state_dict(), cfg["paths"]["path_checkpoint"])
+    #torch.save(model.state_dict(), cfg["paths"]["path_checkpoint"])
+    storage_client = storage.Client("my-vertex-bucket")
+    bucket = storage_client.bucket("my-vertex-bucket")
+    blob = bucket.blob("model/model.pt")
+    with blob.open("wb", ignore_flush=True) as f:
+        torch.save(model.state_dict(), f)
 
 
 if __name__ == "__main__":
