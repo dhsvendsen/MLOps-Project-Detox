@@ -1,18 +1,20 @@
+
 {
     "paths":{
-        "path_train_tokens": "data/processed/tokens_train.pt",
-        "path_train_labels": "data/processed/labels_train.pt",
-        "path_val_tokens": "data/processed/tokens_val.pt",
-        "path_val_labels": "data/processed/labels_val.pt",
-        "path_test_tokens": "data/processed/tokens_test.pt",
-        "path_test_labels": "data/processed/labels_test.pt",
+        "path_train_tokens": "data/processed/balanced_tokens_train_n8000_l32.pt",
+        "path_train_labels": "data/processed/balanced_binary_labels_train_n8000.pt",
+        "path_val_tokens": "data/processed/balanced_tokens_test_n2000_l32.pt",
+        "path_val_labels": "data/processed/balanced_binary_labels_test_n2000.pt",
+        "path_test_tokens": "data/processed/balanced_tokens_test_n2000_l32.pt",
+        "path_test_labels": "data/processed/balanced_binary_labels_test_n2000.pt",
         "path_checkpoint": "models/detox_checkpoint_binary.pth"
     },
     "model":{
         "pretrained_name": "bert-base-uncased",
         "lr": 0.001,
-        "n_epochs": 2,
-        "batch_size": 32
+        "n_epochs": 10,
+        "batch_size": 32,
+        "layer_dim": 500
     },
     "wandb":{
         "project": "detox",

@@ -79,14 +79,17 @@ class LightningBertBinary(LightningModule):
         # Only train last layer
         for param in self.bert.parameters():
             param.requires_grad = False
-        self.class_layer = nn.Linear(self.bert.config.hidden_size, 1)
+        self.hidden_dim = self.cfg['model']['layer_dim']
+        self.hidden_layer = nn.Linear(self.bert.config.hidden_size, self.hidden_dim)
+        self.class_layer = nn.Linear(self.hidden_dim, 1)
         self.loss = nn.BCEWithLogitsLoss()
 
     def forward(self, tokens, mask):
         if tokens.ndim != 2:
             raise ValueError("Expected tokens to a 2D tensor")
         bertput = self.bert(tokens, mask)
-        output = self.class_layer(bertput.pooler_output)
+        intermediate = self.hidden_layer(bertput.pooler_output)
+        output = self.class_layer(intermediate)
         return output
 
     def training_step(self, batch, batch_idx):
@@ -107,7 +110,7 @@ class LightningBertBinary(LightningModule):
         train = TensorDataset(
             inputs[0].type(torch.int64), inputs[1].type(torch.int64), labels.float()
         )
-        train_loader = DataLoader(train, batch_size=self.batch_size, shuffle=True)
+        train_loader = DataLoader(train, batch_size=self.batch_size, shuffle=True, num_workers=16) #this is only on my pc
         return train_loader
 
     def val_dataloader(self):
@@ -116,7 +119,7 @@ class LightningBertBinary(LightningModule):
         val = TensorDataset(
             inputs[0].type(torch.int64), inputs[1].type(torch.int64), labels.float()
         )
-        val_loader = DataLoader(val, batch_size=self.batch_size, shuffle=True)
+        val_loader = DataLoader(val, batch_size=self.batch_size, shuffle=True, num_workers=16)
         return val_loader
 
     def validation_step(self, batch, batch_idx):
