@@ -5,7 +5,7 @@
  MLOps-Project-Detox
 ==============================
 Rune s202192 \
-Jesper s133696 \
+Jesper A s133696 \
 Daniel s103121 \
 Gustav s215917
 
