@@ -77,12 +77,15 @@ class LightningBertBinary(LightningModule):
         # Only train last layer
         for param in self.bert.parameters():
             param.requires_grad = False
-        self.class_layer = nn.Linear(self.bert.config.hidden_size, 1)
+        self.hidden_dim = self.cfg['model']['layer_dim']
+        self.hidden_layer = nn.Linear(self.bert.config.hidden_size, self.hidden_dim)
+        self.class_layer = nn.Linear(self.hidden_dim, 1)
         self.loss = nn.BCEWithLogitsLoss()
 
     def forward(self, tokens, mask):
         bertput = self.bert(tokens, mask)
-        output = self.class_layer(bertput.pooler_output)
+        intermediate = self.hidden_layer(bertput.pooler_output)
+        output = self.class_layer(intermediate)
         return output
 
     def training_step(self, batch, batch_idx):
