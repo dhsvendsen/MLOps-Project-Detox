@@ -1,16 +1,17 @@
-from model import LightningBertBinary
-import torch
+import json
 import string
 import nltk
-import json
-nltk.download("stopwords")
+import torch
+from model import LightningBertBinary
+import os
+from http import HTTPStatus
+import regex as re
+from fastapi import FastAPI
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 from transformers import BertTokenizer
-from fastapi import FastAPI
-from http import HTTPStatus
-import regex as re
-import os
+
+nltk.download("stopwords")
 
 app = FastAPI()
 
@@ -32,7 +33,7 @@ with open("config.json") as file:
 
 def load_model(b):
     model = LightningBertBinary(b)
-    state_dict = torch.load('models/detox_checkpoint_binary.pth')
+    state_dict = torch.load("models/detox_checkpoint_binary.pth")
     model.load_state_dict(state_dict)
     return model
 

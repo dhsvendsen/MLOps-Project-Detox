@@ -4,6 +4,7 @@ from torch import nn, optim
 from torch.utils.data import DataLoader, TensorDataset
 from transformers import BertModel
 
+
 class LightningBert(LightningModule):
     def __init__(self, cfg):
         super().__init__()

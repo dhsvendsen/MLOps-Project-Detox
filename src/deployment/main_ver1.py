@@ -1,14 +1,16 @@
-from src.models.model import LightningBert
-import torch
-import string
+import os
 import pickle
+import string
+from http import HTTPStatus
+
+import regex as re
+import torch
+from fastapi import FastAPI
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 from transformers import BertTokenizer
-from fastapi import FastAPI
-from http import HTTPStatus
-import regex as re
-import os
+
+from src.models.model import LightningBert
 
 app = FastAPI()
 

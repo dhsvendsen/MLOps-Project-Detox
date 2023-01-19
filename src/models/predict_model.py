@@ -1,9 +1,9 @@
-from tqdm import tqdm
+import json
+
 import torch
 from model import LightningBertBinary
 from torch.utils.data import DataLoader, TensorDataset
-from omegaconf import OmegaConf
-import json
+from tqdm import tqdm
 
 if torch.has_cuda:
     device = "cuda"
@@ -33,7 +33,7 @@ def predict():
     with torch.no_grad():
         acc = torch.tensor([0], dtype=torch.float)
         baseline_acc = torch.tensor([0], dtype=torch.float)
-        for tokens, mask, labels in tqdm(test_loader, desc='Looping over testdata'):
+        for tokens, mask, labels in tqdm(test_loader, desc="Looping over testdata"):
             # Only count if there is any toxicity
             outputs = model(tokens.to(device), mask.to(device))
             outputs = torch.sigmoid(outputs).to("cpu")

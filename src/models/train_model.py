@@ -1,11 +1,8 @@
-import torch
 import json
+
+import torch
 from model import LightningBertBinary
 from pytorch_lightning import Trainer
-import pytorch_lightning as pl
-import wandb
-
-# test
 
 if torch.has_cuda:
     device = "cuda"
