@@ -12,7 +12,7 @@
     "model":{
         "pretrained_name": "bert-base-uncased",
         "lr": 0.001,
-        "n_epochs": 10,
+        "n_epochs": 2,
         "batch_size": 32,
         "layer_dim": 500
     },
