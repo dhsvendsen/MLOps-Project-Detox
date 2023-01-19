@@ -9,4 +9,4 @@ steps:
    - name: 'gcr.io/cloud-builders/docker'
      args: ['push', 'gcr.io/main-catwalk-374308/detox_v1']
 options:
-  machineType: 'n1-highcpu-8'
+  machineType: 'N1_HIGHCPU_8'
