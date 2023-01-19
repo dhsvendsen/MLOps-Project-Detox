@@ -13,7 +13,8 @@
         "pretrained_name": "bert-base-uncased",
         "lr": 0.001,
         "n_epochs": 10,
-        "batch_size": 32
+        "batch_size": 32,
+        "layer_dim": 500
     },
     "wandb":{
         "project": "detox",

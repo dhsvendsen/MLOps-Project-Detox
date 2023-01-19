@@ -106,7 +106,7 @@ class LightningBertBinary(LightningModule):
         train = TensorDataset(
             inputs[0].type(torch.int64), inputs[1].type(torch.int64), labels.float()
         )
-        train_loader = DataLoader(train, batch_size=self.batch_size, shuffle=True)
+        train_loader = DataLoader(train, batch_size=self.batch_size, shuffle=True, num_workers=16) #this is only on my pc
         return train_loader
 
     def val_dataloader(self):
@@ -115,7 +115,7 @@ class LightningBertBinary(LightningModule):
         val = TensorDataset(
             inputs[0].type(torch.int64), inputs[1].type(torch.int64), labels.float()
         )
-        val_loader = DataLoader(val, batch_size=self.batch_size, shuffle=True)
+        val_loader = DataLoader(val, batch_size=self.batch_size, shuffle=True, num_workers=16)
         return val_loader
 
     def validation_step(self, batch, batch_idx):
