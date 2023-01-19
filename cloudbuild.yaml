@@ -3,3 +3,7 @@ steps:
      args: ['build', '-t', 'gcr.io/main-catwalk-374308/detox_v1', '--file', './TrainerLocal.dockerfile', '.']
    - name: 'gcr.io/cloud-builders/docker'
      args: ['push', 'gcr.io/main-catwalk-374308/detox_v1']
+   - name: 'gcr.io/cloud-builders/docker'
+     args: ['build', '-t', 'gcr.io/main-catwalk-374308/detox_app', '--file', './simple_app.dockerfile', '.']
+   - name: 'gcr.io/cloud-builders/docker'
+     args: ['push', 'gcr.io/main-catwalk-374308/detox_app']
