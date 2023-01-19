@@ -58,7 +58,7 @@ end of the project.
 * [x] Add a model file and a training script and get that running
 * [x] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
 * [x] Remember to comply with good coding practices (`pep8`) while doing the project
-* [x] Do a bit of code typing and remember to document essential parts of your code
+* [ ] Do a bit of code typing and remember to document essential parts of your code
 * [x] Setup version control for your data or part of your data
 * [x] Construct one or multiple docker files for your code
 * [x] Build the docker files locally and make sure they work as intended
@@ -94,9 +94,9 @@ end of the project.
 
 ### Additional
 
-* [ ] Revisit your initial project description. Did the project turn out as you wanted?
-* [ ] Make sure all group members have a understanding about all parts of the project
-* [ ] Uploaded all your code to github
+* [x] Revisit your initial project description. Did the project turn out as you wanted?
+* [x] Make sure all group members have a understanding about all parts of the project
+* [x] Uploaded all your code to github
 
 ## Group information
 
@@ -424,7 +424,8 @@ gcloud run deploy gcp-test-app --image gcr.io/modified-wonder-374308/test_app:la
 - `Compute Engine`
 - `Container Registry`
 - `Buckets`
-- 
+- `Cloud Run`
+- `Cloud Build`
 
 
 
