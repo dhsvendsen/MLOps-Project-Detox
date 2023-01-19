@@ -24,9 +24,9 @@ jobs:
       with:
         python-version: 3.9
 
+    - uses: iterative/setup-dvc@v1
 
     - name: Get data
-    - uses: iterative/setup-dvc@v1
       run: dvc pull
 
 
