@@ -1,0 +1,50 @@
+{
+    "os": "Windows-10-10.0.22621-SP0",
+    "python": "3.8.15",
+    "heartbeatAt": "2023-01-19T13:53:12.895429",
+    "startedAt": "2023-01-19T13:53:11.793798",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "c:\\Users\\rune7\\Documents\\GitHub\\MLOps-Project-Detox\\src\\models\\sweep_model.py",
+    "codePath": "src\\models\\sweep_model.py",
+    "git": {
+        "remote": "https://github.com/dhsvendsen/MLOps-Project-Detox.git",
+        "commit": "e523641d2458d5b9c420e7d023204a80f272f989"
+    },
+    "email": "rune7863@gmail.com",
+    "root": "C:/Users/rune7/Documents/GitHub/MLOps-Project-Detox",
+    "host": "Rune-PC",
+    "username": "rune7",
+    "executable": "C:\\Users\\rune7\\anaconda3\\envs\\deep\\python.exe",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3201.0,
+        "min": 0.0,
+        "max": 3201.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3201.0,
+            "min": 0.0,
+            "max": 3201.0
+        }
+    ],
+    "disk": {
+        "total": 952.6220664978027,
+        "used": 539.2808570861816
+    },
+    "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3070 Laptop GPU",
+            "memory_total": 8589934592
+        }
+    ],
+    "memory": {
+        "total": 13.855525970458984
+    }
+}

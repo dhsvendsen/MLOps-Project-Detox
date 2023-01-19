@@ -76,6 +76,8 @@ class LightningBertBinary(LightningModule):
         # Only train last layer
         for param in self.bert.parameters():
             param.requires_grad = False
+
+        #Here we do a for loop to create between 0 and 2 linear layers as determined by the config file
         self.class_layer = nn.Linear(self.bert.config.hidden_size, 1)
         self.loss = nn.BCEWithLogitsLoss()
 
@@ -117,4 +119,5 @@ class LightningBertBinary(LightningModule):
     def validation_step(self, batch, batch_idx):
         inputs, mask, labels = batch
         outputs = self(inputs, mask)
+        self.log("val_loss", self.loss(outputs, labels))
         return {"val_loss": self.loss(outputs, labels)}

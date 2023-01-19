@@ -1,0 +1,25 @@
+#Could also be grid, baysan
+method: random
+metric:
+  #could also be min
+  goal: maximize
+  #What variable to max/min
+  name: val_acc
+name: sweep
+parameters:
+  batch_size:
+    #If multiple specific values, define as below
+    values:
+    - 16
+    - 32
+    - 64
+  epochs:
+    values:
+    - 5
+    - 10
+    - 15
+  lr:
+  #If range, specifiy as below
+  #not sure how to specifiy step size and type (lin/log) : GPT3 answer did not work!?
+    max: 0.1
+    min: 0.0001
