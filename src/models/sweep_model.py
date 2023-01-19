@@ -47,7 +47,7 @@ def train():
     cfg["model"]["learning_rate"] = lr
     cfg["model"]["batch_size"] = batch_size
     cfg['model']['layer_dim'] = layer_dim
-    print(cfg)
+
     # Initialize a WandbLogger
     wandb_logger = WandbLogger(project="gpt-4")
 
@@ -58,12 +58,7 @@ def train():
     )
     trainer.fit(model)
 
-    # Save
-    #model.to("cpu")
-    #torch.save(model.state_dict(), cfg["paths"]["path_checkpoint"])
-
-
 if __name__ == "__main__":
     # train()
     #
-    wandb.agent(sweep_id, function=train, count=4)
+    wandb.agent(sweep_id, function=train, count=200)
