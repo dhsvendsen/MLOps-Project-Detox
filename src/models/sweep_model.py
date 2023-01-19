@@ -1,11 +1,8 @@
-import torch
 import json
+import torch
+import wandb
 from model import LightningBertBinary
 from pytorch_lightning import Trainer
-import pytorch_lightning as pl
-import wandb
-import yaml
-
 from pytorch_lightning.loggers import WandbLogger
 
 sweep_configuration = {
@@ -46,7 +43,7 @@ def train():
 
     cfg["model"]["learning_rate"] = lr
     cfg["model"]["batch_size"] = batch_size
-    cfg['model']['layer_dim'] = layer_dim
+    cfg["model"]["layer_dim"] = layer_dim
 
     # Initialize a WandbLogger
     wandb_logger = WandbLogger(project="gpt-4")
@@ -57,6 +54,7 @@ def train():
         max_epochs=cfg["model"]["n_epochs"], accelerator=device, logger=wandb_logger
     )
     trainer.fit(model)
+
 
 if __name__ == "__main__":
     # train()

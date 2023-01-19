@@ -1,12 +1,12 @@
 
 {
     "paths":{
-        "path_train_tokens": "data/processed/balanced_tokens_train_n8000_l32.pt",
-        "path_train_labels": "data/processed/balanced_binary_labels_train_n8000.pt",
-        "path_val_tokens": "data/processed/balanced_tokens_test_n2000_l32.pt",
-        "path_val_labels": "data/processed/balanced_binary_labels_test_n2000.pt",
-        "path_test_tokens": "data/processed/balanced_tokens_test_n2000_l32.pt",
-        "path_test_labels": "data/processed/balanced_binary_labels_test_n2000.pt",
+        "path_train_tokens": "data/processed/tokens_train.pt",
+        "path_train_labels": "data/processed/labels_train.pt",
+        "path_val_tokens": "data/processed/tokens_val.pt",
+        "path_val_labels": "data/processed/labels_val.pt",
+        "path_test_tokens": "data/processed/tokens_test.pt",
+        "path_test_labels": "data/processed/labels_test.pt",
         "path_checkpoint": "models/detox_checkpoint_binary.pth"
     },
     "model":{

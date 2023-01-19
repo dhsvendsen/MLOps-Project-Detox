@@ -1,12 +1,13 @@
 import json
-import string
-import nltk
-import torch
-from model import LightningBertBinary
 import os
+import string
 from http import HTTPStatus
+
+import nltk
 import regex as re
+import torch
 from fastapi import FastAPI
+from model import LightningBertBinary
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 from transformers import BertTokenizer
