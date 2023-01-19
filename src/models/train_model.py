@@ -1,45 +1,33 @@
-import pickle
-import subprocess
-
-import hydra
 import torch
-from model import LightningBert
-from omegaconf import OmegaConf
+import json
+from model import LightningBertBinary
 from pytorch_lightning import Trainer
-
-# specify the name of the bucket and the folder
-bucket_name = "dtumlops-storage"
-folder_name = "models"
-
+import pytorch_lightning as pl
+import wandb
 
 if torch.has_cuda:
-    acc = "cuda"
+    device = "cuda"
 elif torch.has_mps:
-    acc = "mps"
+    device = "mps"
 else:
-    acc = "cpu"
-print(f"Using {acc} accelerator")
+    device = "cpu"
+print(f"Using {device} accelerator")
 
 
-@hydra.main(config_path="../../config", config_name="default_config.yaml")
-def train(cfg):
+def train():
 
-    cfg_dict = OmegaConf.to_container(cfg, resolve=True, throw_on_missing=True)
-    with open("../../../src/deployment/latest_training_dict.pickle", "wb") as handle:
-        pickle.dump(cfg_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    # Load config
+    with open("config/config.json") as file:
+        cfg = json.load(file)
 
-    model = LightningBert(cfg_dict)
+    model = LightningBertBinary(cfg)
 
-    trainer = Trainer(max_epochs=cfg.train["n_epochs"], accelerator=acc)
+    trainer = Trainer(max_epochs=cfg["model"]["n_epochs"], accelerator=device)
     trainer.fit(model)
 
     # Save
-    torch.save(model.state_dict(), cfg.train["modelpath"])
-
-    # use the gsutil cp command to upload the model file to the bucket
-    subprocess.run(
-        ["gsutil", "cp", cfg.train["modelpath"], f"gs://{bucket_name}/{folder_name}/"]
-    )
+    model.to("cpu")
+    torch.save(model.state_dict(), cfg["paths"]["path_checkpoint"])
 
 
 if __name__ == "__main__":
