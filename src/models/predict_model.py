@@ -1,4 +1,4 @@
-import hydra
+from tqdm import tqdm
 import torch
 from model import LightningBertBinary
 from torch.utils.data import DataLoader, TensorDataset
@@ -33,7 +33,7 @@ def predict():
     with torch.no_grad():
         acc = torch.tensor([0], dtype=torch.float)
         baseline_acc = torch.tensor([0], dtype=torch.float)
-        for i, (tokens, mask, labels) in enumerate(test_loader):
+        for tokens, mask, labels in tqdm(test_loader, desc='Looping over testdata'):
             # Only count if there is any toxicity
             outputs = model(tokens.to(device), mask.to(device))
             outputs = torch.sigmoid(outputs).to("cpu")
