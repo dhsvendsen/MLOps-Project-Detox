@@ -424,7 +424,8 @@ gcloud run deploy gcp-test-app --image gcr.io/modified-wonder-374308/test_app:la
 - `Compute Engine`
 - `Container Registry`
 - `Buckets`
-- 
+- `Cloud Run`
+- `Cloud Build`
 
 
 
