@@ -356,7 +356,7 @@ We have developped two docker images for our project: one for training the model
 
 You can work with these images locally or through GCP.
       
-To work locally you can take the dockerfiles from our github (as described earlier) and build and run these. As an example here is how you would use the docker image locally:
+To work locally you can take the dockerfiles from our github (as described earlier) and build and run these. As an example here is how you would use the docker image for deployment/FastApi locally:
 ```bash
 docker build -f simple_app.dockerfile . -t fastapi:latest
 ```
@@ -368,25 +368,9 @@ afterwards you can access the fastapi on localhost:8080
 To run everything on GCP, you can use the existing image in our container registry to deploy the FastApi through `Cloud Run`:
 
 ```bash
-gcloud run deploy gcp-test-app --image gcr.io/modified-wonder-374308/test_app:latest --platform managed --region europe-west1 --allow-unauthenticated --port 8080
+gcloud run deploy fastapi_deployment --image gcr.io/modified-wonder-374308/test_app:latest    JESPER INSERT PATH HERE --platform managed --region europe-west1 --allow-unauthenticated --port 8080
 ```
-
-You could then run/create a docker container:
-
-```bash
-Insert how to run docker container
-```
-
-Alternatively you could run everything in Google Cloud. Step one would be to run the training:
-
-```bash
-insert how to run training on GCP
-```
-
-Afterwards you could run the deployment using
-```bash
-gcloud run deploy gcp-test-app --image gcr.io/modified-wonder-374308/test_app:latest --platform managed --region europe-west1 --allow-unauthenticated --port 8080
-```
+Afterwards the service will be available at the endpoint which `Cloud Run` returns.
 
 
 
@@ -421,11 +405,11 @@ gcloud run deploy gcp-test-app --image gcr.io/modified-wonder-374308/test_app:la
 >
 > Answer:
 
-- `Compute Engine`
-- `Container Registry`
-- `Buckets`
-- `Cloud Run`
-- `Cloud Build`
+- `Compute Engine` for training our model. Specifically we spin up a VM with our training docker image. Here we pull data from a bucket (using `dvc pull`), run the model, and export a checkpoint to a bucket.
+- `Container Registry` is used for storing images. We have two images that we use: an image for training our model and an image for deploying it through FastApi.
+- `Buckets` is used for storing data and trained models (checkpoints). The data bucket is version controlled using dvc, which allows us to easily pull data from the bucket when we train the model.
+- `Cloud Run` is used for deploying our FastApi. We use our deployment/FastApi docker image, and create a Cloud Run function from this, making it easier to do inference for anyone interested in using our application.
+- `Cloud Build` is used for building the docker images. Specifically we have created a trigger such that our `CloudBuild.yaml`is executed when ever we push to our main branch in the GitHub Repo. This starts the Cloud Build service and we get a new image in our container registry for both the training image and deployment/FastApi image.
 
 
 
@@ -500,7 +484,9 @@ gcloud run deploy gcp-test-app --image gcr.io/modified-wonder-374308/test_app:la
 >
 > Answer:
 
---- question 23 fill here ---
+We did not manage to implement monitoring. Implementing monitoring could potentially help the longevity of our application by alerting us of model decay and data drift. 
+
+In all machine learning models it is fair to expect that there might be some change to the data and as such to a models performance if it is not retrained. In our specific case, we are working with user generated comments from wikipedia, and rating their toxicity levels. Especially within this context we might expect the user behaviour to change over time. As an example, acrononyms with different sentiments migth change over time (ie. "WTF" or "xoxo"), causing model decay, as it would not be trained on such examples. Furthermore, the concept of toxicity might change, and create a need for retraining the models on data with adjusted labels. 
 
 ### Question 24
 
