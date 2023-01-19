@@ -26,6 +26,8 @@ class LightningBert(LightningModule):
         self.loss = nn.BCEWithLogitsLoss(pos_weight=pos_weights)
 
     def forward(self, tokens, mask):
+        if tokens.ndim != 2:
+            raise ValueError("Expected tokens to a 2D tensor")
         bertput = self.bert(tokens, mask)
         output = self.class_layer(bertput.pooler_output)
         return output
@@ -81,6 +83,8 @@ class LightningBertBinary(LightningModule):
         self.loss = nn.BCEWithLogitsLoss()
 
     def forward(self, tokens, mask):
+        if tokens.ndim != 2:
+            raise ValueError("Expected tokens to a 2D tensor")
         bertput = self.bert(tokens, mask)
         output = self.class_layer(bertput.pooler_output)
         return output
