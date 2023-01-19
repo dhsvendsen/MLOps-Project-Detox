@@ -1,9 +1,8 @@
 from model import LightningBertBinary
 import torch
 import string
-import pickle
 import nltk
-
+import json
 nltk.download("stopwords")
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
@@ -27,7 +26,7 @@ def root():
     return response
 
 
-with open("config/config.json") as file:
+with open("config.json") as file:
     cfg = json.load(file)
 
 
