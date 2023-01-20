@@ -602,6 +602,8 @@ Where to begin? :)
 - Fastapi serving: The most important issues here were that the error message made it seem like we had a port problem of sorts. However, it turned out to be a RAM problem of the VM serving the app.
 - In general, we probably struggled the most with authentication: Getting access to writing to a bucket when having trained a model in the cloud. As always the solution was rather simple (editing the rights of the virtual machine to be able to write), but it took a while to decode error messages and figuring out the right solution.
 
+Homegrown meme for your entertainment:
+![my_image](figures/big_brain_mlops.png)
 
 ### Question 27
 
