@@ -345,7 +345,9 @@ Regarding config files, we list the model hyperparameters in a config.json file 
 >
 > Answer:
 
---- question 14 fill here ---
+![my_image](figures/wandb1.<extension>)
+
+![my_image](figures/wandb1.<extension>)
 
 ### Question 15
 
@@ -376,9 +378,10 @@ afterwards you can access the fastapi on localhost:8080
 To run everything on GCP, you can use the existing image in our container registry to deploy the FastApi through `Cloud Run`:
 
 ```bash
-gcloud run deploy fastapi_deployment --image gcr.io/modified-wonder-374308/test_app:latest    JESPER INSERT PATH HERE --platform managed --region europe-west1 --allow-unauthenticated --port 8080
+gcloud run deploy <name the cloud run function> --image gcr.io/<project id>/<image name>:latest --platform managed --region europe-west1 --allow-unauthenticated --port 8080
 ```
 Afterwards the service will be available at the endpoint which `Cloud Run` returns.
+
 
 
 
@@ -499,7 +502,7 @@ For our training flow, we used google compute engine (GCE) to launch a virtual m
 
 We did not manage to implement monitoring. Implementing monitoring could potentially help the longevity of our application by alerting us of model decay and data drift. 
 
-In all machine learning models it is fair to expect that there might be some change to the data and as such to a models performance if it is not retrained. In our specific case, we are working with user generated comments from wikipedia, and rating their toxicity levels. Especially within this context we might expect the user behaviour to change over time. As an example, acrononyms with different sentiments migth change over time (ie. "WTF" or "xoxo"), causing model decay, as it would not be trained on such examples. Furthermore, the concept of toxicity might change, and create a need for retraining the models on data with adjusted labels. 
+In all machine learning models it is fair to expect that there might be some change to the data and as such to a models performance, if it is not retrained. In our specific case, we are working with user generated comments from wikipedia, and rating their toxicity levels. Especially within this context we might expect the user behaviour to change over time. As an example, acrononyms with different sentiments might change over time (ie. "WTF" or "xoxo"), causing model decay, as it would not be trained on such examples. Furthermore, the concept of toxicity might change, and create a need for retraining the models on data with adjusted labels. 
 
 ### Question 24
 
