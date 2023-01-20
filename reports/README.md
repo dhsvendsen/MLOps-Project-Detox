@@ -352,6 +352,7 @@ As can be seen in the second image, we generally find that a lower dimensionalit
 ![my_image](figures/wandb1.png)
 
 ![my_image](figures/wandb2.png)
+![my_image](figures/wandb3.png)
 
 ### Question 15
 
@@ -466,8 +467,8 @@ For our training flow, we used google compute engine (GCE) to launch a virtual m
 >
 > Answer:
 
-![my_image](figures/container_registry_1.png)
-![my_image](figures/container_registry_2.png)
+![my_image](figures/container_registry_3.png)
+
 
 ### Question 21
 
@@ -492,8 +493,42 @@ For our training flow, we used google compute engine (GCE) to launch a virtual m
 >
 > Answer:
 
---- question 22 fill here ---
+We have deployed our model by building a docker image containing a FastApi which we can run on Google Cloud run.
 
+To begin with we have our model checkpoint stored in a GCP bucket, from which we can query a both locally and from a docker image deployed to Cloud Run.
+
+We started out by building the FastApi locally. We simply pulled our model checkpoint, loaded it into our model, and returned a response in the form of a prediction. Once this worked we dockerized the whole thing and deployed it locally again. Here the hardest part was to get the correct port set, so the docker image would know where to send the response.
+
+Finally we took this docker image on deployed it on cloud run. Hardest part for this was understanding error logs. The Cloud Run function ran out of memory, but threw a port error. You had to really dive into the error log to see that it actually just ran out of memory.
+
+The steps for deploying the image to Cloud Run are as follows:
+
+- tag the image
+```bash
+docker tag <image name> gcr.io/<project id>/<image name>
+```
+- push the image to your container registry
+
+```bash
+docker push gcr.io/<project id>/<image name>
+```
+The image should now be in your container registry and can be set up using the console (which we found to be the easiest and most error prone) or through the command line
+```bash
+gcloud run deploy <name the cloud run function> --image gcr.io/<project id>/<image name>:latest --platform managed --region europe-west1 --allow-unauthenticated --port 8080
+```
+
+Now the api can be queried by either going to the url returned by Cloud Run, or by using a curl command, eg:
+```bash
+curl -X 'POST' \
+  'https://detox-appv2-loy2ilu7ia-ez.a.run.app/text_model/?comment=here%20is%20a%20comment' \
+  -H 'accept: application/json' \
+  -d ''
+```
+
+which should return something like:
+```bash
+{"message":"OK","pred":[[0.6610842943191528]]}
+```
 ### Question 23
 
 > **Did you manage to implement monitoring of your deployed model? If yes, explain how it works. If not, explain how**
@@ -523,7 +558,10 @@ In all machine learning models it is fair to expect that there might be some cha
 >
 > Answer:
 
---- question 24 fill here ---
+- Gustav used 3.50 credits, quite cheap as most where for exercises and cloud run
+- Daniel used all credits (Keept a tesla 100 gpu running for a day is about 50 credits), and 0.5 credits in a new account.
+- Jesper used 33 credits, pretty much all for training on a vm with a GPU
+- Rune used 11, mainly for experiments on VM's with GPUs
 
 ## Overall discussion of project
 
@@ -544,7 +582,7 @@ In all machine learning models it is fair to expect that there might be some cha
 >
 > Answer:
 
---- question 25 fill here ---
+![my_image](figures/mlops_architecture.jpg)
 
 ### Question 26
 
