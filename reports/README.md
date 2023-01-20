@@ -133,7 +133,7 @@ Since our project is a NLP classification task, we utilized the Transformers fra
 
 First we preprocess the data by stemming, lowering and removing stop words using functionality from NLTK. Then we tokenize the comments using the functionality from the BertTokenizer. The new dataset is split into test, train and validation sets and saved as a tensor. 
 
-We then implemented a PyTorch NN model whose first layers are the BertModel with  frozen weights, followed by a trainable dense classification layer. As such, the Transformers framework helped us complete the project by effectively functioning as an embedding tool, whose outputs could then be classified with a simple linear layer. 
+We then implemented a PyTorch NN model whose first layers are the BertModel with  frozen weights, followed by two trainable dense classification layer. As such, the Transformers framework helped us complete the project by effectively functioning as an embedding tool, whose outputs could then be classified with simple linear layer. 
 
 ## Coding environment
 
@@ -345,12 +345,11 @@ Regarding config files, we list the model hyperparameters in a config.json file 
 >
 > Answer:
 
-As seen in the first image, we have conducted a hyperparameter sweep in W&B. This sweep can be run from either a local pc or Google Cloud run. The W&B web api dynamically informs us about the performance of different sets of hyperparameters. We sweeped over the following parameters: batch size, learning rate, dimensionality in hidden layer and number of epochs. This sweep was conducted using Bayesian optimization to minimize the validation loss. This works by fitting Gaussian procesess to the labelled set of hyperparameters (i.e. known validation loss) and uses an acquisition function identify which unlabelled datapoints (sets of hyperparameters) have the highest probability of improvement upon the hitherto best set of hyperparameters. 
+As seen in the first image, we have conducted a hyperparameter sweep in W&B. This sweep can be run from either a local pc or Google Cloud run. The W&B web api dynamically informs us about the performance of different sets of hyperparameters. We sweeped over the following parameters: batch size, learning rate, dimensionality in hidden layer and number of epochs. This sweep was conducted using Bayesian optimization to minimize the validation loss. This works by fitting Gaussian procesess to the labelled set of hyperparameters (i.e. known validation loss) and uses an acquisition function to identify which unlabelled datapoints (sets of hyperparameters) have the highest probability of improvement upon the hitherto best set of hyperparameters. 
 
 As can be seen in the second image, we generally find that a lower dimensionality in the hidden layer, with a larger batch size and greater number of epochs performs the best. After identifying the best performing parameters, we trained the final model upon these using compute engine. This training run was also logged. We logged both training and validation loss to test whether the model was overfitting, which we did not find evidence for (see third image). The second image also shows the evolution of validation loss as a function of when the run was conducted. This shows that the sweep did not improve  upon the model performance after the first 4 hours.
 
 ![my_image](figures/wandb1.png)
-
 ![my_image](figures/wandb2.png)
 ![my_image](figures/wandb3.png)
 
@@ -493,7 +492,7 @@ For our training flow, we used google compute engine (GCE) to launch a virtual m
 >
 > Answer:
 
-We have deployed our model by building a docker image containing a FastApi which we can run on Google Cloud run.
+We have deployed our model by building a docker image containing a FastApi which we can push to GCP container registry, and then we can run on Google Cloud run.
 
 To begin with we have our model checkpoint stored in a GCP bucket, from which we can query a both locally and from a docker image deployed to Cloud Run.
 
@@ -583,6 +582,18 @@ In all machine learning models it is fair to expect that there might be some cha
 > Answer:
 
 ![my_image](figures/mlops_architecture.jpg)
+
+If we start by looking at the local model, we developed this using the Pytorch architecture. This model loads a pretrained BertModel from the Transformers module made by HuggingFace. We wrapped the model in a Pytorch Lightning framework, which reduces boilerplate code. 
+
+In order to ensure reproducibility, we specify a requirements.txt file using pipreqs. The packages were installed using a Conda environment. All of this is then packaged in a docker container, in order to be able to simply ship it to a VM and trusting it to still run.
+
+Version control is taken care of by Git on the code side and DVC on the data and model checkpoint side. We push the code to Github and have set up a GCP Trigger that automatically builds a docker image using Cloud Build when code is pushed to the main branch. We used multiple branches on Git to develop various parts of the code simultaneously. DVC pushes and pulls data to and from Google Cloud Bucket. 
+
+When an image is build using Cloud Trigger, it arrives in our Cloud Container Registry. From here we either use Cloud Run, in the case of deploying the model, or Cloud Enigine, in the case of training and sweeping, to build a VM using the container. This VM can then be SSH'ed into, which allows us to train or sweep for hyperparameters using a high end cloud GPU. 
+
+Finally, we use FastAPI to deploy our model. This allows the user to send requests and get predictions on the request.  
+
+When running experiments, we used W&B to track these. 
 
 ### Question 26
 
