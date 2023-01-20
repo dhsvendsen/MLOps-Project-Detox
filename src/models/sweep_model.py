@@ -1,11 +1,10 @@
 import json
 
 import torch
+import wandb
 from model import LightningBertBinary
 from pytorch_lightning import Trainer
 from pytorch_lightning.loggers import WandbLogger
-
-import wandb
 
 sweep_configuration = {
     "method": "bayes",
