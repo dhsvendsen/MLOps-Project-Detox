@@ -451,7 +451,9 @@ For our training flow, we used google compute engine (GCE) to launch a virtual m
 >
 > Answer:
 
---- question 19 fill here ---
+![my_image](figures/bucket1.png)
+
+![my_image](figures/bucket2.png)
 
 ### Question 20
 
@@ -460,7 +462,8 @@ For our training flow, we used google compute engine (GCE) to launch a virtual m
 >
 > Answer:
 
---- question 20 fill here ---
+![my_image](figures/container_registry_1.png)
+![my_image](figures/container_registry_2.png)
 
 ### Question 21
 
@@ -469,7 +472,7 @@ For our training flow, we used google compute engine (GCE) to launch a virtual m
 >
 > Answer:
 
---- question 21 fill here ---
+![my_image](figures/cloud_build_history.png)
 
 ### Question 22
 
