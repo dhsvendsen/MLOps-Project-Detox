@@ -26,6 +26,8 @@ class LightningBert(LightningModule):
         self.loss = nn.BCEWithLogitsLoss(pos_weight=pos_weights)
 
     def forward(self, tokens, mask):
+        if tokens.ndim != 2:
+            raise ValueError("Expected tokens to a 2D tensor")
         bertput = self.bert(tokens, mask)
         output = self.class_layer(bertput.pooler_output)
         return output
@@ -77,12 +79,14 @@ class LightningBertBinary(LightningModule):
         # Only train last layer
         for param in self.bert.parameters():
             param.requires_grad = False
-        self.hidden_dim = self.cfg['model']['layer_dim']
+        self.hidden_dim = self.cfg["model"]["layer_dim"]
         self.hidden_layer = nn.Linear(self.bert.config.hidden_size, self.hidden_dim)
         self.class_layer = nn.Linear(self.hidden_dim, 1)
         self.loss = nn.BCEWithLogitsLoss()
 
     def forward(self, tokens, mask):
+        if tokens.ndim != 2:
+            raise ValueError("Expected tokens to a 2D tensor")
         bertput = self.bert(tokens, mask)
         intermediate = self.hidden_layer(bertput.pooler_output)
         output = self.class_layer(intermediate)

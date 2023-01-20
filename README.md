@@ -1,10 +1,11 @@
 [![Flake8 test](https://github.com/dhsvendsen/MLOps-Project-Detox/actions/workflows/flake8.yml/badge.svg)](https://github.com/dhsvendsen/MLOps-Project-Detox/actions/workflows/flake8.yml)
 [![isort test](https://github.com/dhsvendsen/MLOps-Project-Detox/actions/workflows/isort.yml/badge.svg)](https://github.com/dhsvendsen/MLOps-Project-Detox/actions/workflows/isort.yml)
+[![pytest test](https://github.com/dhsvendsen/MLOps-Project-Detox/actions/workflows/tests.yml/badge.svg)](https://github.com/dhsvendsen/MLOps-Project-Detox/actions/workflows/tests.yml)
 
  MLOps-Project-Detox
 ==============================
 Rune s202192 \
-Jesper s133696 \
+Jesper A s133696 \
 Daniel s103121 \
 Gustav s215917
 

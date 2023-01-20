@@ -1,10 +1,10 @@
 timeout: "2h"
 steps:
    - name: 'gcr.io/cloud-builders/docker'
-     args: ['build', '-t', 'gcr.io/main-catwalk-374308/detox_app', '--file', './simple_app.dockerfile', '.']
+     args: ['build', '-t', 'gcr.io/main-catwalk-374308/detox_app:latest', '--file', './simple_app.dockerfile', '--cache-from', 'gcr.io/main-catwalk-374308/detox_app:latest','.']
    - name: 'gcr.io/cloud-builders/docker'
      args: ['push', 'gcr.io/main-catwalk-374308/detox_app']
    - name: 'gcr.io/cloud-builders/docker'
-     args: ['build', '-t', 'gcr.io/main-catwalk-374308/detox_v1', '--file', './TrainerLocal.dockerfile', '.']
+     args: ['build', '-t', 'gcr.io/main-catwalk-374308/detox_v1:latest', '--file', './TrainerLocal.dockerfile','--cache-from', 'gcr.io/main-catwalk-374308/detox_v1:latest', '.']
    - name: 'gcr.io/cloud-builders/docker'
      args: ['push', 'gcr.io/main-catwalk-374308/detox_v1']

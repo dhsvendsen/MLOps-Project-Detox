@@ -1,5 +1,6 @@
-from google.cloud import storage
 import json
+
+from google.cloud import storage
 
 
 def upload_model_to_cloud():
@@ -13,8 +14,8 @@ def upload_model_to_cloud():
     bucket = client.bucket("dtumlops-storage")
 
     # create a blob object
-    print(f"cloud storage path: models/")
-    blob = bucket.blob(f"models/")
+    print("cloud storage path: models/")
+    blob = bucket.blob("models/")
 
     print(f' path to file: {cfg["paths"]["path_checkpoint"]}')
     # upload the file

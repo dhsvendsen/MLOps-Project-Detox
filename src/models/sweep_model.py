@@ -1,11 +1,8 @@
-import torch
 import json
+import torch
+import wandb
 from model import LightningBertBinary
 from pytorch_lightning import Trainer
-import pytorch_lightning as pl
-import wandb
-import yaml
-
 from pytorch_lightning.loggers import WandbLogger
 
 sweep_configuration = {
