@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+
 from tests import _PATH_DATA
 
 processed_path = f"{_PATH_DATA}/processed"

@@ -103,7 +103,7 @@ end of the project.
 ### Question 1
 > **Enter the group number you signed up on <learn.inside.dtu.dk>**
 >
-> Answer:
+> Answer: 52
 
 --- question 1 fill here ---
 
@@ -114,7 +114,7 @@ end of the project.
 >
 > *sXXXXXX, sXXXXXX, sXXXXXX*
 >
-> Answer:
+> Answer: *s202192, s133696, s103121, s215917*
 
 s215917
 
@@ -554,7 +554,12 @@ In all machine learning models it is fair to expect that there might be some cha
 >
 > Answer:
 
---- question 26 fill here ---
+Where to begin? :) 
+- DVC inside container: We used a long time trying to be able to pull data (and models which we also dvc-tracked) from inside a container. The solution was to initialise dvc without git (--no-scm). 
+- Cloud training: Using the google cloud compute engine we tried to build a VM from a container. This makes a VM with a so-called “container-optimized OS” (COS), a very bare-bone linux distro with no drivers. The internet is full of COS-play and we were not alone in our struggles. The most important fixes we had to make were to realise that most recent COS was not gpu-driver compatible (so we had to use the second-to-newest COS) and install some GPU drivers.
+- Fastapi serving: The most important issues here were that the error message made it seem like we had a port problem of sorts. However, it turned out to be a RAM problem of the VM serving the app.
+- In general, we probably struggled the most with authentication: Getting access to writing to a bucket when having trained a model in the cloud. As always the solution was rather simple (editing the rights of the virtual machine to be able to write), but it took a while to decode error messages and figuring out the right solution.
+
 
 ### Question 27
 
