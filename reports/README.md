@@ -162,11 +162,16 @@ This repository contains a set of docker images and a requirements file (`requir
 ```bash
 pip install -r requirements.txt
 ```
-However, to assure complete reproducability, it is recommened to instead utilize the docker the docker images. One way would be to build the image locally using the `TrainerLocal.dockerfile` for the training, and `Simple_app.dockerfile` for the FastApi deployment. The images are stored on our Google Cloud Container registry. Simply pull the newest docker image:
+However, to get a higher degree of reproducability, it is recommened to instead utilize the docker files, for building docker images. The dockerfiles are stored in github, where we have `TrainerLocal.dockerfile` for the training, and `Simple_app.dockerfile` for the FastApi deployment. You can then build the image locally, eg.:
 ```bash
-docker pull INSERT PATH TO CONTAINER REGISTRY
+docker build -f Simple_app.dockerfile . -t train:latest
 ```
-and use this image to build a docker container.
+then tag and push the image to your GCP conntainer registry:
+```bash
+docker tag train gcr.io/<project_id>/train
+docker push gcr.io/<project_id>/train
+```
+and you would now be able to run the image in GCP
 
 ### Question 5
 
