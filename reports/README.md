@@ -186,7 +186,8 @@ and you would now be able to run the image in GCP
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+Hundreds of different cookiecutter templates exist, due to the nature of the project we decided to initialise our project using the cookiecutter "data-science-template" which we cloned from https://github.com/drivendata/cookiecutter-data-science. From this template we have removed the References folder as it was unused in our project. A .dvc folder has been initialised to keep the dvc config files that enable users to pull the data from our remote storage, and we have added docker and cloudbuild files to our root directory. When running the code locally the user needs to call dvc data pull, which will create a data folder locally, as well as the dvc model pull which will clone the latest model. In the root of the folder added dockerfiles, makefiles and a cloudbuild file. Using the cookiecutter data science template makes it easier for others to understand the logic of our project and quickly familiarise them with the codebase.
+
 
 ### Question 6
 
@@ -265,7 +266,8 @@ Either we used 'git checkout main' to merge the branches locally and then subseq
 >
 > Answer:
 
---- question 10 fill here ---
+We used DVC for managing both our data (raw and processed) as well as our model checkpoint. The actual data was stored in a Google Bucket with open read-access. This means that it is fairly easy for anyone with access to our git repo, to pull the repo, call DVC pull and then receive the data and model files needed to build the docker images for both training and inference. However, the process of updating our DVC model files got complicated when running our training on GCE, since we did not have git authentication on the VM. This meant that we could not correctly add and update the .dvc files in our repo from our VM, and instead we saved the model from our VM to google bucket by using the Google.storage library. As a consequence, the model file is initially not DVC tracked, and can not be automatically pulled by others by calling dvc pull. Hence, when updating the model, one afterwards locally has to download the new model from the bucket on a laptop with our git repo initialised, and then manually add the new model with dvc add, dvc push and git push the changed .dvc files.
+
 
 ### Question 11
 
@@ -322,9 +324,12 @@ We used hydra with a default.yaml config until the final day of the project. Thi
 >
 > Answer:
 
-When running experiments, we would log the hyperparameters in the config files along with the performance using W&B. Combining W&B and Hydra config files proved somwhat challenging.
+Our main experiment consisted in doing a W&B sweep over a set of hyperparameters.  This can be thought of as running experiments, since we are experimentally (using Bayesian optimization) determining which combination of hyperparameters leads to the best performance and how good this performance is.
+The W&B sweep is not directly reproducible, since the code is set up to write to our W&B project. However, this can easily be changed. Additionally, by showing our W&B report, we are able to document the performance of our model.
 
-We did not get Hydra and W&B to work in conjunction. However, in our personal projects we tracked experiments using W&B by setting a Sweep config over select hyperparameters. This can be thought of as running experiments, since we are determening which combination of hyperparameters leads to the best performance and how good this performance is. Alternatively, we could also just run training etc. on a specific set of paramters and track how the performance metrics change over epochs etc.
+
+Regarding config files, we list the model hyperparameters in a config.json file which is loaded when training the model. This ensures that when training the final model, we can set the optimal hyperparameters identified through the W&B sweep, and then log the training and validation loss again using W&B. 
+
 
 ### Question 14
 
@@ -392,7 +397,11 @@ Afterwards the service will be available at the endpoint which `Cloud Run` retur
 >
 > Answer:
 
---- question 16 fill here ---
+We used a powerful IDE (vscode or pycharm depending on the group member) to debug our code. By setting breakpoints we were able to track where the code fails and try out different fixes in the debugging console. A program like pycharm has an especially powerful debugger, since it gives an excellent overview of which values the different variables have at any given time, as well allowing one to jump between objects by ctrl+left-click’ing them.
+
+
+Regarding profiling, we elected to prioritize other tasks and therefore did not profile our code. This means that performance was probably left on the table. However, when using the pytorch lightning module, it alerts the user to potential bottlenecks such as the number of workers in the dataloaders etc. Some of these suggested changes did in fact speed up the code, although we were not able to document it.
+
 
 ## Working in the cloud
 
@@ -430,7 +439,8 @@ Afterwards the service will be available at the endpoint which `Cloud Run` retur
 >
 > Answer:
 
---- question 18 fill here ---
+For our training flow, we used google compute engine (GCE) to launch a virtual machine (VM) based on the Container Optimised Image (COS). COS is a lightweight OS designed specifically for running docker containers on. We configured the VM to use 1 x V100 GPU to accelerate training of our model, which otherwise took more than 5 minutes per epoch to run on our local CPU. We decided to run training on a dedicated VM, to make it easier for us to troubleshoot by being able to SSH into the machine, unlike Cloud Run. Configuring the VM turned out to be more difficult than expected: COS comes without GPU support natively, and requires installing dependencies; there is a simple google command to do so, but it turns out there is a known bug that makes the simple command non functional with the latest released COS. Hence one manually has to specify the VM to use the second-to-latest release of COS instantiating the instance, which can only be done through the CLI. However, it should be possible to combine all these CLI commands into a single makefile, so that the user could simply call “Make Cloud Train” for example.
+
 
 ### Question 19
 
