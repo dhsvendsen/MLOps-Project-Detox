@@ -4,6 +4,9 @@ import torch
 from model import LightningBertBinary
 from pytorch_lightning import Trainer
 
+from pytorch_lightning.loggers import WandbLogger
+wandb_logger = WandbLogger(project="test")
+
 if torch.has_cuda:
     device = "cuda"
 elif torch.has_mps:
@@ -21,7 +24,7 @@ def train():
 
     model = LightningBertBinary(cfg)
 
-    trainer = Trainer(max_epochs=cfg["model"]["n_epochs"], accelerator=device)
+    trainer = Trainer(max_epochs=cfg["model"]["n_epochs"], accelerator=device, logger=wandb_logger)
     trainer.fit(model)
 
     # Save
