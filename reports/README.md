@@ -345,6 +345,10 @@ Regarding config files, we list the model hyperparameters in a config.json file 
 >
 > Answer:
 
+As seen in the first image, we have conducted a hyperparameter sweep in W&B. This sweep can be run from either a local pc or Google Cloud run. The W&B web api dynamically informs us about the performance of different sets of hyperparameters. We sweeped over the following parameters: batch size, learning rate, dimensionality in hidden layer and number of epochs. This sweep was conducted using Bayesian optimization to minimize the validation loss. This works by fitting Gaussian procesess to the labelled set of hyperparameters (i.e. known validation loss) and uses an acquisition function identify which unlabelled datapoints (sets of hyperparameters) have the highest probability of improvement upon the hitherto best set of hyperparameters. 
+
+As can be seen in the second image, we generally find that a lower dimensionality in the hidden layer, with a larger batch size and greater number of epochs performs the best. After identifying the best performing parameters, we trained the final model upon these using compute engine. This training run was also logged. We logged both training and validation loss to test whether the model was overfitting, which we did not find evidence for (see third image). The second image also shows the evolution of validation loss as a function of when the run was conducted. This shows that the sweep did not improve  upon the model performance after the first 4 hours.
+
 ![my_image](figures/wandb1.png)
 
 ![my_image](figures/wandb2.png)
@@ -576,5 +580,14 @@ Where to begin? :)
 >
 > Answer:
 
---- question 27 fill here ---
+As DTU requires the us to specify who did what, we outline this here.
+However, we note that all members cooperated and contributed equally.
+
+s103121 was lead in developing the transformer model and CI.
+s133696 was lead in managing google cloud and docker.
+s202192 was lead in experiment logging and data processing.
+s215917 was lead in app development and DVC.
+
+
+
 
