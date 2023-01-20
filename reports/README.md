@@ -589,11 +589,9 @@ In order to ensure reproducibility, we specify a requirements.txt file using pip
 
 Version control is taken care of by Git on the code side and DVC on the data and model checkpoint side. We push the code to Github and have set up a GCP Trigger that automatically builds a docker image using Cloud Build when code is pushed to the main branch. We used multiple branches on Git to develop various parts of the code simultaneously. DVC pushes and pulls data to and from Google Cloud Bucket. 
 
-When an image is build using Cloud Trigger, it arrives in our Cloud Container Registry. From here we either use Cloud Run, in the case of deploying the model, or Cloud Enigine, in the case of training and sweeping, to build a VM using the container. This VM can then be SSH'ed into, which allows us to train or sweep for hyperparameters using a high end cloud GPU. 
+When an image is build using Cloud Trigger, it arrives in our Cloud Container Registry. From here we either use Cloud Run, in the case of deploying the model, or Cloud Enigine, in the case of training and sweeping, to build a VM using the container. This VM can then be SSH'ed into, which allows us to train or sweep for hyperparameters using a high end cloud GPU. When running experiments (locally or in the cloud), we used W&B to track these.
 
 Finally, we use FastAPI to deploy our model. This allows the user to send requests and get predictions on the request.  
-
-When running experiments, we used W&B to track these. 
 
 ### Question 26
 
