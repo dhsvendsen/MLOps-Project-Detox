@@ -162,11 +162,16 @@ This repository contains a set of docker images and a requirements file (`requir
 ```bash
 pip install -r requirements.txt
 ```
-However, to assure complete reproducability, it is recommened to instead utilize the docker the docker images. One way would be to build the image locally using the `TrainerLocal.dockerfile` for the training, and `Simple_app.dockerfile` for the FastApi deployment. The images are stored on our Google Cloud Container registry. Simply pull the newest docker image:
+However, to get a higher degree of reproducability, it is recommened to instead utilize the docker files, for building docker images. The dockerfiles are stored in github, where we have `TrainerLocal.dockerfile` for the training, and `Simple_app.dockerfile` for the FastApi deployment. You can then build the image locally, eg.:
 ```bash
-docker pull INSERT PATH TO CONTAINER REGISTRY
+docker build -f Simple_app.dockerfile . -t train:latest
 ```
-and use this image to build a docker container.
+then tag and push the image to your GCP conntainer registry:
+```bash
+docker tag train gcr.io/<project_id>/train
+docker push gcr.io/<project_id>/train
+```
+and you would now be able to run the image in GCP
 
 ### Question 5
 
@@ -192,7 +197,7 @@ and use this image to build a docker container.
 >
 > Answer:
 
---- question 6 fill here ---
+In terms of quality we made sure to run “black .” pretty regularly and talked continuously about how to structure our code. In larger companies when people don’t sit close together as we did, it makes sense that code must be very readable so that people don’t waste time trying to decipher each other. A good thing we could have done is to write more function documentation. Maybe also to have used precommit for even cleaner code.
 
 ## Version control
 
@@ -211,7 +216,7 @@ and use this image to build a docker container.
 >
 > Answer:
 
---- question 7 fill here ---
+In total we have implemented 6 tests. Primarily we are testing whether the data is balanced but also its shape. While it helped using the “pos_weight” in “bcelosswithlogits” to counteract class-imbalance, the best solution was to balance the data directly. We tested the model as well in terms of being able to predict, and outputting tensors of the right shape. We also added a “raise ValueError” in our models forward function.
 
 ### Question 8
 
@@ -226,7 +231,7 @@ and use this image to build a docker container.
 >
 > Answer:
 
---- question 8 fill here ---
+We calculated coverage pretty late and ran into “No source for code: '/xxxxx/_remote_module_non_scriptable.py'.” and didn’t manage to debug. Comparing to when we did the exercises (98-100%) we probably also hit a decent coverage on the source code we tested which is the model and data but not the training/predicting scripts. Clearly, it is possible to write a test that executes the entire model class and therefore gets high coverage. While this shows that the code at least runs without throwing errors, it does not mean that all is well necessarily: e.g. we had a version “make_dataset” that was making data of the right shape, but we had interpreted the data description on kaggle wrong (what the flag -1 meant), leading to bad results. Similarly a model can run and output results even if someone changes loss = loss*0, etc. Tests don’t guard against bad math or stupidity, but maybe against silly mistakes.
 
 ### Question 9
 
@@ -276,7 +281,13 @@ Either we used 'git checkout main' to merge the branches locally and then subseq
 >
 > Answer:
 
---- question 11 fill here ---
+We use github actions to check pep8 compliance and run tests. We have two workflow files for running isort and flake8 respectively and one to run our tests using pytest. The workflow responsible for testing runs them on both windows, linux and macos but only with python 3.9. It seemed that using caching didn’t speed up the process so we did not use it.
+We only implemented the pytest workflow quite late, but the linting workflow helped us see when one of us had forgotten to run flake8 to check for pep8 compliance before pushing. This made it a bit more obvious when someone had pushed and whether they had been a bit lazy with the code. 
+We didn’t use github actions to implement safeguards, since we wanted to maximise speed of development. The times that we did break everything, we think would not have been prevented by the safeguards we had.
+Now that we have something more or less final, it would be nice knowing that the main branch is guarded a bit more. We also discussed that it would be awesome to use github actions to make a small webpage for the project.
+
+An example of a triggered pytest workflow testing out several OS can be seen here: https://github.com/dhsvendsen/MLOps-Project-Detox/actions/runs/3961690366
+
 
 ## Running code and tracking experiments
 
@@ -295,14 +306,7 @@ Either we used 'git checkout main' to merge the branches locally and then subseq
 >
 > Answer:
 
-We used Hydra to keep track of our hyperparamters and thereby ensure reproducibility. An overall Hydra config file pointed to separate config files for each of the scripts related to the model: train, test and the model itself. These scripts initialize  by loading their respective config file, which sets hyperparamters such as the data paths and model paramers which in the case of the train script includes: 
-
-pretrained_name: "bert-base-uncased"
-lr: 0.001
-n_epochs: 2 
-batch_size: 32
-
-Using Hydra to create config files ensures that these are easy to understand for people unfamiliar with the code, which makes the project more reproducable.
+We used hydra with a default.yaml config until the final day of the project. This seemed to provide a pretty neat structure. Then we got sufficiently tired of two things: For one the increased clutter in the code, but mainly the automatic change of working directory to an output/day-hour-etc directory, which made managing paths cumbersome. In the end we made a single config.json file which solved our problems. We all agreed that we did not miss hydra.
 
 
 ### Question 13
