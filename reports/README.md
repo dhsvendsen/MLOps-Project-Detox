@@ -347,7 +347,7 @@ Regarding config files, we list the model hyperparameters in a config.json file 
 
 ![my_image](figures/wandb1.png)
 
-![my_image](figures/wandb1.png)
+![my_image](figures/wandb2.png)
 
 ### Question 15
 
