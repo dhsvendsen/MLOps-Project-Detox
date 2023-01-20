@@ -578,7 +578,7 @@ In all machine learning models it is fair to expect that there might be some cha
 >
 > Answer:
 
-![my_image](figures/MLops architecture.jpg)
+![my_image](figures/mlops_architecture.jpg)
 
 ### Question 26
 
